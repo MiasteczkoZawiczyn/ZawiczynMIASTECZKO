@@ -7,11 +7,11 @@
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts: Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f0f2f5; /* Jasnoszary kolor tła */
+            background-color: #f8fafc; /* Bardzo jasny szary */
             color: #333;
         }
         .container {
@@ -21,13 +21,13 @@
         }
         .header {
             background-color: #ffffff;
-            border-radius: 0.75rem; /* Zaokrąglone rogi */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            padding: 1rem 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            padding: 1.5rem 2rem;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 1rem;
+            gap: 1.5rem;
         }
         @media (min-width: 768px) {
             .header {
@@ -37,47 +37,62 @@
         }
         .nav-button {
             padding: 0.75rem 1.5rem;
-            border-radius: 0.5rem;
+            border-radius: 9999px; /* Całkowicie zaokrąglone rogi */
             font-weight: 600;
-            transition: background-color 0.3s, color 0.3s;
+            transition: all 0.3s ease;
             cursor: pointer;
             text-align: center;
             white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
         .nav-button.active {
             background-color: #3b82f6; /* Niebieski */
             color: #ffffff;
+            box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.4), 0 2px 4px -1px rgba(59, 130, 246, 0.2);
         }
         .nav-button:not(.active):hover {
-            background-color: #e0e7ff; /* Jasnoniebieski na najechaniu */
-            color: #2563eb; /* Ciemniejszy niebieski */
+            background-color: #eff6ff; /* Jasnoniebieski na najechaniu */
+            color: #1d4ed8; /* Ciemniejszy niebieski */
         }
         .content-section {
             display: none; /* Domyślnie ukryte */
             background-color: #ffffff;
-            border-radius: 0.75rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            padding: 2rem;
-            margin-top: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            padding: 2.5rem;
+            margin-top: 2rem;
         }
         .content-section.active {
             display: block; /* Aktywna sekcja widoczna */
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         .announcement-item {
-            background-color: #e0f2fe; /* Bardzo jasny niebieski */
-            border-left: 5px solid #3b82f6; /* Niebieska ramka z lewej */
-            padding: 1rem;
-            border-radius: 0.5rem;
-            margin-bottom: 1rem;
+            background-color: #f0f9ff; /* Bardzo jasny niebieski */
+            border-left: 6px solid #3b82f6; /* Niebieska ramka z lewej */
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            margin-bottom: 1.5rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .announcement-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
         .announcement-item h3 {
             font-weight: 700;
             color: #1e40af; /* Ciemnoniebieski */
             margin-bottom: 0.5rem;
+            font-size: 1.25rem;
         }
         .announcement-item p {
-            font-size: 0.95rem;
-            line-height: 1.5;
+            font-size: 1rem;
+            line-height: 1.6;
         }
         .download-item {
             padding: 1rem;
@@ -85,6 +100,10 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            transition: background-color 0.3s;
+        }
+        .download-item:hover {
+            background-color: #f9fafb;
         }
         .download-item:last-child {
             border-bottom: none;
@@ -94,45 +113,63 @@
             font-weight: 600;
             text-decoration: none;
             transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
         .download-item a:hover {
             color: #1e40af;
         }
         .footer {
             text-align: center;
-            padding: 1.5rem;
+            padding: 2rem;
             margin-top: 2rem;
             color: #6b7280;
             font-size: 0.9rem;
         }
     </style>
 </head>
-<body class="bg-gray-100">
+<body class="bg-slate-50">
     <div class="container">
         <!-- Nagłówek i nawigacja -->
         <header class="header">
             <div class="flex items-center gap-4">
                 <!-- Logo miasta -->
-                <img src="https://cdn.discordapp.com/icons/1385291492746072267/b62512ac966be9d0eb79d02dc5e1b445.png?size=1024" alt="Logo Miasta Zawiczyn" class="w-20 h-20 rounded-full shadow-md">
+                <img src="https://cdn.discordapp.com/icons/1385291492746072267/b62512ac966be9d0eb79d02dc5e1b445.png?size=1024" alt="Logo Miasta Zawiczyn" class="w-16 h-16 rounded-full shadow-md">
                 <h1 class="text-3xl font-bold text-blue-700">Miasteczko Zawiczyn</h1>
             </div>
             <nav class="flex flex-wrap justify-center md:justify-end gap-2 md:gap-4 mt-4 md:mt-0">
-                <button class="nav-button active" data-target="announcements-section">Ogłoszenia</button>
-                <button class="nav-button" data-target="about-section">O nas</button>
-                <button class="nav-button" data-target="contact-section">Kontakt</button>
-                <button class="nav-button" data-target="pkm-section">PKM Zawiczyn</button>
-                <button class="nav-button" data-target="downloads-section">Pliki do pobrania</button>
+                <button class="nav-button active" data-target="announcements-section">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-megaphone"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>
+                    <span>Ogłoszenia</span>
+                </button>
+                <button class="nav-button" data-target="about-section">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-info"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+                    <span>O nas</span>
+                </button>
+                <button class="nav-button" data-target="contact-section">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                    <span>Kontakt</span>
+                </button>
+                <button class="nav-button" data-target="pkm-section">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bus"><path d="M19 17h2l.6-3.3a1 1 0 0 0 0-.4L22 13"/><path d="M2 17h17"/><path d="M2 9h19c.6 0 .9.5.8 1.1L20 17H5.5"/><path d="M6 18v3"/><path d="M19 18v3"/><circle cx="17" cy="17" r="2"/><circle cx="7" cy="17" r="2"/></svg>
+                    <span>PKM Zawiczyn</span>
+                </button>
+                <button class="nav-button" data-target="downloads-section">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-download"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+                    <span>Pliki do pobrania</span>
+                </button>
             </nav>
         </header>
 
         <!-- Sekcja Ogłoszenia (domyślnie aktywna) -->
         <section id="announcements-section" class="content-section active">
-            <h2 class="text-2xl font-bold text-blue-600 mb-4">Najnowsze Ogłoszenia</h2>
-            <div id="announcements-content">
-                <!-- Przykładowe ogłoszenia - edytuj lub usuń! -->
+            <h2 class="text-3xl font-bold text-blue-700 mb-6">Najnowsze Ogłoszenia</h2>
+            <div id="announcements-list">
+                <!-- Przykładowe ogłoszenia -->
                 <div class="announcement-item">
                     <h3>Prace nad grą.</h3>
-                    <p> przyjemnością informujemy, że prace nad naszą nową mapą oraz zintegrowanymi systemami postępują zgodnie z planem. Dokładamy wszelkich starań, aby każdy szczegół był dopracowany, a ostateczny efekt spełnił Państwa oczekiwania. Dziękujemy za cierpliwość i już wkrótce będziemy mogli podzielić się efektami naszej pracy!</p>
+                    <p>Z przyjemnością informujemy, że prace nad naszą nową mapą oraz zintegrowanymi systemami postępują zgodnie z planem. Dokładamy wszelkich starań, aby każdy szczegół był dopracowany, a ostateczny efekt spełnił Państwa oczekiwania. Dziękujemy za cierpliwość i już wkrótce będziemy mogli podzielić się efektami naszej pracy!</p>
                     <p class="text-sm text-gray-500 mt-2">Data publikacji: 2025-08-07</p>
                 </div>
                 <div class="announcement-item">
@@ -143,87 +180,98 @@
                 <div class="announcement-item">
                     <h3>Przystankowe zapowiedzi głosowe.</h3>
                     <p>Podczas podróży naszymi pojazdami mogą Państwo usłyszeć komunikaty głosowe zapowiadające kolejne przystanki, które nagrał pan Maciej. Dodatkowo, przy uruchamianiu systemu odtwarzany jest sygnał dźwiękowy „Zenox - Technologia Przyszłości”. Życzymy Państwu przyjemnej podróży z PKM Zawiczyn!</p>
- <div id="downloads-content">
-                <!-- Przykładowe pliki - edytuj lub usuń! -->
-                <div class="download-item">
-                    <span>Komunikat Uruchamiania ZenoX</span>
-                    <a href="files/ZenoxURUCHAMIANIE.mp3" download class="text-blue-600 hover:underline">Pobierz</a>
+  <div class="download-item">
+                    <span>Komunikat Uruchamiania ZenoX (MP3)</span>
+                    <a href="files/ZenoxURUCHAMIANIE.mp3" download>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-download"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+                        <span>Pobierz</span>
+                    </a>
+                </div>
                     <p class="text-sm text-gray-500 mt-2">Data publikacji: 2025-08-07</p>
                 </div>
-                <!-- Dodaj nowe ogłoszenia tutaj -->
             </div>
         </section>
 
         <!-- Sekcja O nas -->
         <section id="about-section" class="content-section">
-            <h2 class="text-2xl font-bold text-blue-600 mb-4">O nas</h2>
-            <p class="mb-4">Witamy na oficjalnej stronie internetowej Miasteczka Zawiczyn! Jesteśmy dynamicznie rozwijającą się społecznością, położoną w malowniczej okolicy, która łączy tradycję z nowoczesnością. Nasze miasto szczyci się bogatą historią, pięknymi terenami zielonymi oraz aktywnymi mieszkańcami.</p>
-            <p class="mb-4">Dążymy do stworzenia miejsca, w którym każdy czuje się u siebie, gdzie rozwój idzie w parze z dbałością o środowisko i jakość życia. Na tej stronie znajdziesz najważniejsze informacje dotyczące funkcjonowania miasta, aktualnych wydarzeń oraz inicjatyw lokalnych.</p>
-            <p>Zapraszamy do aktywnego uczestnictwa w życiu Zawiczyna!</p>
+            <h2 class="text-3xl font-bold text-blue-700 mb-6">O nas</h2>
+            <p class="mb-4 text-lg">Witamy na oficjalnej stronie internetowej Miasteczka Zawiczyn! Jesteśmy dynamicznie rozwijającą się społecznością, położoną w malowniczej okolicy, która łączy tradycję z nowoczesnością. Nasze miasto szczyci się bogatą historią, pięknymi terenami zielonymi oraz aktywnymi mieszkańcami.</p>
+            <p class="mb-4 text-lg">Dążymy do stworzenia miejsca, w którym każdy czuje się u siebie, gdzie rozwój idzie w parze z dbałością o środowisko i jakość życia. Na tej stronie znajdziesz najważniejsze informacje dotyczące funkcjonowania miasta, aktualnych wydarzeń oraz inicjatyw lokalnych.</p>
+            <p class="text-lg">Zapraszamy do aktywnego uczestnictwa w życiu Zawiczyna!</p>
         </section>
 
         <!-- Sekcja Kontakt -->
         <section id="contact-section" class="content-section">
-            <h2 class="text-2xl font-bold text-blue-600 mb-4">Kontakt</h2>
-            <p class="mb-2"><strong>Urząd Miasta Zawiczyn</strong></p>
-            <p class="mb-2">ul. Warszawska 43a/43b</p>
-            <p class="mb-4">12-452 Zawiczyn</p>
-
-            <p class="mb-2"><strong>Telefon:</strong> +48 690 123 456</p>
-            <p class="mb-4"><strong>E-mail:</strong> <a href="mailto:miasteczkozawiczyn.biuro@gmail.com" class="text-blue-600 hover:underline">biuro.zawiczyn@zawiczyn.pl</a></p>
-
-            <h3 class="text-xl font-semibold text-blue-600 mb-2 mt-6">Godziny otwarcia Urzędu:</h3>
-            <ul class="list-disc list-inside mb-4">
-                <li>Poniedziałek: 8:00 - 16:00</li>
-                <li>Wtorek: 8:00 - 16:00</li>
-                <li>Środa: 8:00 - 17:00</li>
-                <li>Czwartek: 8:00 - 16:00</li>
-                <li>Piątek: 8:00 - 15:00</li>
-            </ul>
-
-            <p>Zapraszamy do kontaktu!</p>
+            <h2 class="text-3xl font-bold text-blue-700 mb-6">Kontakt</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold text-blue-600 mb-2">Urząd Miasta Zawiczyn</h3>
+                    <p class="mb-2">ul. Warszawska 43a/43b</p>
+                    <p class="mb-4">12-452 Zawiczyn</p>
+                    <p class="mb-2"><strong>Telefon:</strong> +48 690 123 456</p>
+                    <p class="mb-4"><strong>E-mail:</strong> <a href="mailto:biuro.zawiczyn@zawiczyn.pl" class="text-blue-600 hover:underline">biuro.zawiczyn@zawiczyn.pl</a></p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold text-blue-600 mb-2">Godziny otwarcia Urzędu:</h3>
+                    <ul class="space-y-1">
+                        <li class="flex justify-between"><span>Poniedziałek:</span><span>8:00 - 16:00</span></li>
+                        <li class="flex justify-between"><span>Wtorek:</span><span>8:00 - 16:00</span></li>
+                        <li class="flex justify-between"><span>Środa:</span><span>8:00 - 17:00</span></li>
+                        <li class="flex justify-between"><span>Czwartek:</span><span>8:00 - 16:00</span></li>
+                        <li class="flex justify-between"><span>Piątek:</span><span>8:00 - 15:00</span></li>
+                    </ul>
+                </div>
+            </div>
+            <p class="mt-8 text-lg">Zapraszamy do kontaktu!</p>
         </section>
 
         <!-- Sekcja PKM Zawiczyn -->
         <section id="pkm-section" class="content-section">
-            <h2 class="text-2xl font-bold text-blue-600 mb-4">PKM Zawiczyn</h2>
-            <p class="mb-4">Przedsiębiorstwo Komunikacji Miejskiej Zawiczyn (PKM Zawiczyn) zapewnia mieszkańcom i odwiedzającym wygodny i ekologiczny transport na terenie miasta i okolic. Nasza flota autobusów stale się rozwija, aby sprostać rosnącym potrzebom komunikacyjnym.</p>
-            <p class="mb-4">Na tej stronie znajdziesz najważniejsze informacje dotyczące rozkładów jazdy, biletów oraz zmian w funkcjonowaniu komunikacji miejskiej.</p>
-
+            <h2 class="text-3xl font-bold text-blue-700 mb-6">PKM Zawiczyn</h2>
+            <p class="mb-4 text-lg">Przedsiębiorstwo Komunikacji Miejskiej Zawiczyn (PKM Zawiczyn) zapewnia mieszkańcom i odwiedzającym wygodny i ekologiczny transport na terenie miasta i okolic. Nasza flota autobusów stale się rozwija, aby sprostać rosnącym potrzebom komunikacyjnym.</p>
+            <p class="mb-4 text-lg">Na tej stronie znajdziesz najważniejsze informacje dotyczące rozkładów jazdy, biletów oraz zmian w funkcjonowaniu komunikacji miejskiej.</p>
             <h3 class="text-xl font-semibold text-blue-600 mb-2 mt-6">Przydatne linki:</h3>
-            <ul class="list-disc list-inside">
-                <li><a href="#" class="text-blue-600 hover:underline" target="_blank">Rozkład jazdy autobusów (link zewnętrzny)</a></li>
-                <li><a href="#" class="text-blue-600 hover:underline" target="_blank">Cennik biletów (link zewnętrzny)</a></li>
-                <li><a href="#" class="text-blue-600 hover:underline" target="_blank">Mapa linii komunikacyjnych (link zewnętrzny)</a></li>
+            <ul class="list-none space-y-2">
+                <li><a href="#" class="text-blue-600 hover:underline flex items-center gap-2" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07L10 6.5"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07L14 17.5"/></svg>
+                    <span>Rozkład jazdy autobusów (link zewnętrzny)</span>
+                </a></li>
+                <li><a href="#" class="text-blue-600 hover:underline flex items-center gap-2" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-ticket"><path d="M2 9a3 3 0 0 1 0 6v-6Z"/><path d="M22 9a3 3 0 0 0 0 6v-6Z"/><path d="M10 21V3"/><path d="M14 21V3"/></svg>
+                    <span>Cennik biletów (link zewnętrzny)</span>
+                </a></li>
+                <li><a href="#" class="text-blue-600 hover:underline flex items-center gap-2" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/></svg>
+                    <span>Mapa linii komunikacyjnych (link zewnętrzny)</span>
+                </a></li>
             </ul>
-            <p class="text-sm text-gray-500 mt-4">PKM Zawiczyn. Wszelkie Prawa Zastrzeżone.</p>
-            </ul>
-<h2 class="text-2xl font-bold text-blue-600 mb-4">Pliki do pobrania</h2>
-            <p class="mb-4">Poniżej znajdziesz listę dokumentów i formularzy, które możesz pobrać. Należą one do PKM ZAWICZYN.</p>
-            <div id="downloads-content">
-                <!-- Przykładowe pliki - edytuj lub usuń! -->
+            <h3 class="text-xl font-semibold text-blue-600 mb-2 mt-6">Pliki do pobrania:</h3>
+            <div id="pkm-downloads-list">
                 <div class="download-item">
                     <span>Regulamin Przewozów PKM ZAWICZYN (PDF)</span>
-                    <a href="files/regulamin_przew_PKM_Zawiczyn.pdf" download class="text-blue-600 hover:underline">Pobierz</a>
-                </div>
-                <!--  nowe pliki tutaj -->
+                    <a href="files/regulamin_przew_PKM_Zawiczyn.pdf" download>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-download"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+                        <span>Pobierz</span>
+                    </a>
             </div>
-            <p class="text-sm text-gray-500 mt-4">wkrótce</p>
+            <p class="text-sm text-gray-500 mt-4">PKM Zawiczyn. Wszelkie Prawa Zastrzeżone.</p>
         </section>
 
         <!-- Sekcja Pliki do pobrania -->
         <section id="downloads-section" class="content-section">
-            <h2 class="text-2xl font-bold text-blue-600 mb-4">Pliki do pobrania</h2>
-            <p class="mb-4">Poniżej znajdziesz listę dokumentów i formularzy, które możesz pobrać. Są to m.in. uchwały rady miasta, formularze wniosków, regulaminy i inne przydatne materiały.</p>
-            <div id="downloads-content">
-                <!-- Przykładowe pliki - edytuj lub usuń! -->
+            <h2 class="text-3xl font-bold text-blue-700 mb-6">Pliki do pobrania</h2>
+            <p class="mb-4 text-lg">Poniżej znajdziesz listę dokumentów i formularzy, które możesz pobrać. Są to m.in. uchwały rady miasta, formularze wniosków, regulaminy i inne przydatne materiały.</p>
+            <div id="downloads-list">
+                <!-- Przykładowy plik - możesz go edytować lub usunąć, gdy dodasz swoje własne pliki -->
                 <div class="download-item">
-                    <span>RBRAK (PDF)</span>
-                    <a href="files/regulamin_przew_PKM_Zawiczn.pdf" download class="text-blue-600 hover:underline">Pobierz</a>
+                    <span>Przykładowy dokument (PDF)</span>
+                    <a href="files/przykładowy_dokument.pdf" download>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-download"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+                        <span>Pobierz</span>
+                    </a>
                 </div>
-                <!--  nowe pliki tutaj -->
             </div>
-            <p class="text-sm text-gray-500 mt-4">wkrótce</p>
+            <p class="text-sm text-gray-500 mt-4">Wkrótce więcej plików.</p>
         </section>
 
         <!-- Stopka -->
@@ -242,7 +290,10 @@
                 contentSections.forEach(section => {
                     section.classList.remove('active');
                 });
-                document.getElementById(targetId).classList.add('active');
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    targetSection.classList.add('active');
+                }
             }
 
             // Funkcja do aktywowania przycisku nawigacji
@@ -250,7 +301,10 @@
                 navButtons.forEach(button => {
                     button.classList.remove('active');
                 });
-                document.querySelector(`[data-target="${targetId}"]`).classList.add('active');
+                const activeButton = document.querySelector(`[data-target="${targetId}"]`);
+                if (activeButton) {
+                    activeButton.classList.add('active');
+                }
             }
 
             // Obsługa kliknięć w przyciski nawigacji
@@ -263,8 +317,9 @@
             });
 
             // Upewnij się, że sekcja ogłoszeń jest aktywna po załadowaniu strony
-            showSection('announcements-section');
-            activateButton('announcements-section');
+            const initialSectionId = 'announcements-section';
+            showSection(initialSectionId);
+            activateButton(initialSectionId);
         });
     </script>
 </body>
