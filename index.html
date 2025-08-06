@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miasto Zawiczyn - Oficjalna Strona</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f2f5; /* Jasnoszary kolor tła */
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+        .header {
+            background-color: #ffffff;
+            border-radius: 0.75rem; /* Zaokrąglone rogi */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 1rem 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+        @media (min-width: 768px) {
+            .header {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+        }
+        .nav-button {
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: background-color 0.3s, color 0.3s;
+            cursor: pointer;
+            text-align: center;
+            white-space: nowrap;
+        }
+        .nav-button.active {
+            background-color: #3b82f6; /* Niebieski */
+            color: #ffffff;
+        }
+        .nav-button:not(.active):hover {
+            background-color: #e0e7ff; /* Jasnoniebieski na najechaniu */
+            color: #2563eb; /* Ciemniejszy niebieski */
+        }
+        .content-section {
+            display: none; /* Domyślnie ukryte */
+            background-color: #ffffff;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-top: 1.5rem;
+        }
+        .content-section.active {
+            display: block; /* Aktywna sekcja widoczna */
+        }
+        .announcement-item {
+            background-color: #e0f2fe; /* Bardzo jasny niebieski */
+            border-left: 5px solid #3b82f6; /* Niebieska ramka z lewej */
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .announcement-item h3 {
+            font-weight: 700;
+            color: #1e40af; /* Ciemnoniebieski */
+            margin-bottom: 0.5rem;
+        }
+        .announcement-item p {
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        .download-item {
+            padding: 1rem;
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .download-item:last-child {
+            border-bottom: none;
+        }
+        .download-item a {
+            color: #2563eb;
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .download-item a:hover {
+            color: #1e40af;
+        }
+        .footer {
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="container">
+        <!-- Nagłówek i nawigacja -->
+        <header class="header">
+            <div class="flex items-center gap-4">
+                <!-- Logo miasta -->
+                <img src="https://placehold.co/80x80/3b82f6/ffffff?text=O5K4R_Technologic" alt="Logo Miasta Zawiczyn" class="w-20 h-20 rounded-full shadow-md">
+                <h1 class="text-3xl font-bold text-blue-700">Miasteczko Zawiczyn</h1>
+            </div>
+            <nav class="flex flex-wrap justify-center md:justify-end gap-2 md:gap-4 mt-4 md:mt-0">
+                <button class="nav-button active" data-target="announcements-section">Ogłoszenia</button>
+                <button class="nav-button" data-target="about-section">O nas</button>
+                <button class="nav-button" data-target="contact-section">Kontakt</button>
+                <button class="nav-button" data-target="pkm-section">PKM Zawiczyn</button>
+                <button class="nav-button" data-target="downloads-section">Pliki do pobrania</button>
+            </nav>
+        </header>
+
+        <!-- Sekcja Ogłoszenia (domyślnie aktywna) -->
+        <section id="announcements-section" class="content-section active">
+            <h2 class="text-2xl font-bold text-blue-600 mb-4">Najnowsze Ogłoszenia</h2>
+            <div id="announcements-content">
+                <!-- Przykładowe ogłoszenia - edytuj lub usuń! -->
+                <div class="announcement-item">
+                    <h3>Piknik Rodzinny w parku Osiedle Młodych.</h3>
+                    <p>Zapraszamy wszystkich mieszkańców Zawiczyna na piknik rodzinny. Piknik odbędzie się 30 sierpnia o godzinie 18:00. Serdecznie Zapraszamy!</p>
+                    <p class="text-sm text-gray-500 mt-2">Data publikacji: 2025-08-06</p>
+                </div>
+                <div class="announcement-item">
+                    <h3>Nowa strona Miasteczka Zawiczyn"</h3>
+                    <p>Halo Halo! Informujemu ze dnia 05.08.2025 została utworzona strona Miasta. Znajdą Państwo tu informacje m.in. o miasteczku i o wydarzeniach. Miłego korzystania!</p>
+                    <p class="text-sm text-gray-500 mt-2">Data publikacji: 2025-07-25</p>
+                </div>
+                <div class="announcement-item">
+                    <h3>Zawiczyn zaprasza na Dni Miasta!</h3>
+                    <p>W dniach 23-25 sierpnia odbędą się coroczne Dni Miasta Zawiczyn. W programie m.in. koncerty, jarmark regionalny i atrakcje dla dzieci. Zapraszamy serdecznie!</p>
+                    <p class="text-sm text-gray-500 mt-2">Data publikacji: 2025-07-20</p>
+                </div>
+                <!-- Dodaj nowe ogłoszenia tutaj -->
+            </div>
+        </section>
+
+        <!-- Sekcja O nas -->
+        <section id="about-section" class="content-section">
+            <h2 class="text-2xl font-bold text-blue-600 mb-4">O nas</h2>
+            <p class="mb-4">Witamy na oficjalnej stronie internetowej Miasta Zawiczyn! Jesteśmy dynamicznie rozwijającą się społecznością, położoną w malowniczej okolicy, która łączy tradycję z nowoczesnością. Nasze miasto szczyci się bogatą historią, pięknymi terenami zielonymi oraz aktywnymi mieszkańcami.</p>
+            <p class="mb-4">Dążymy do stworzenia miejsca, w którym każdy czuje się u siebie, gdzie rozwój idzie w parze z dbałością o środowisko i jakość życia. Na tej stronie znajdziesz najważniejsze informacje dotyczące funkcjonowania miasta, aktualnych wydarzeń oraz inicjatyw lokalnych.</p>
+            <p>Zapraszamy do aktywnego uczestnictwa w życiu Zawiczyna!</p>
+        </section>
+
+        <!-- Sekcja Kontakt -->
+        <section id="contact-section" class="content-section">
+            <h2 class="text-2xl font-bold text-blue-600 mb-4">Kontakt</h2>
+            <p class="mb-2"><strong>Urząd Miasta Zawiczyn</strong></p>
+            <p class="mb-2">ul. Warszawska 43a/43b</p>
+            <p class="mb-4">12-452 Zawiczyn</p>
+
+            <p class="mb-2"><strong>Telefon:</strong> +48 690 123 456</p>
+            <p class="mb-4"><strong>E-mail:</strong> <a href="mailto:zawiczynkontakt@gmail.com" class="text-blue-600 hover:underline">kontakt.zawiczyn@zawiczyn.pl</a></p>
+
+            <h3 class="text-xl font-semibold text-blue-600 mb-2 mt-6">Godziny otwarcia Urzędu:</h3>
+            <ul class="list-disc list-inside mb-4">
+                <li>Poniedziałek: 8:00 - 16:00</li>
+                <li>Wtorek: 8:00 - 16:00</li>
+                <li>Środa: 8:00 - 17:00</li>
+                <li>Czwartek: 8:00 - 16:00</li>
+                <li>Piątek: 8:00 - 15:00</li>
+            </ul>
+
+            <p>Zapraszamy do kontaktu!</p>
+        </section>
+
+        <!-- Sekcja PKM Zawiczyn -->
+        <section id="pkm-section" class="content-section">
+            <h2 class="text-2xl font-bold text-blue-600 mb-4">PKM Zawiczyn</h2>
+            <p class="mb-4">Publiczna Komunikacja Miejska Zawiczyn (PKM Zawiczyn) zapewnia mieszkańcom i odwiedzającym wygodny i ekologiczny transport na terenie miasta i okolic. Nasza flota autobusów i tramwajów (jeśli dotyczy) stale się rozwija, aby sprostać rosnącym potrzebom komunikacyjnym.</p>
+            <p class="mb-4">Na tej stronie znajdziesz najważniejsze informacje dotyczące rozkładów jazdy, biletów oraz zmian w funkcjonowaniu komunikacji miejskiej.</p>
+
+            <h3 class="text-xl font-semibold text-blue-600 mb-2 mt-6">Przydatne linki:</h3>
+            <ul class="list-disc list-inside">
+                <li><a href="#" class="text-blue-600 hover:underline" target="_blank">Rozkład jazdy autobusów (link zewnętrzny)</a></li>
+                <li><a href="#" class="text-blue-600 hover:underline" target="_blank">Cennik biletów (link zewnętrzny)</a></li>
+                <li><a href="#" class="text-blue-600 hover:underline" target="_blank">Mapa linii komunikacyjnych (link zewnętrzny)</a></li>
+            </ul>
+            <p class="text-sm text-gray-500 mt-4">PKM Zawiczyn. Wszelkie Prawa Zastrzeżone.</p>
+        </section>
+
+        <!-- Sekcja Pliki do pobrania -->
+        <section id="downloads-section" class="content-section">
+            <h2 class="text-2xl font-bold text-blue-600 mb-4">Pliki do pobrania</h2>
+            <p class="mb-4">Poniżej znajdziesz listę dokumentów i formularzy, które możesz pobrać. Są to m.in. uchwały rady miasta, formularze wniosków, regulaminy i inne przydatne materiały.</p>
+            <div id="downloads-content">
+                <!-- Przykładowe pliki - edytuj lub usuń! -->
+                <div class="download-item">
+                    <span>Uchwała Rady Miasta Zawiczyn nr 1/2025 (PDF)</span>
+                    <a href="./files/uchwala_nr_1_2025.pdf" download class="text-blue-600 hover:underline">Pobierz</a>
+                </div>
+                <div class="download-item">
+                    <span>Formularz wniosku o dowód osobisty (DOCX)</span>
+                    <a href="./files/wniosek_dowod_osobisty.docx" download class="text-blue-600 hover:underline">Pobierz</a>
+                </div>
+                <div class="download-item">
+                    <span>Regulamin Budżetu Obywatelskiego 2026 (PDF)</span>
+                    <a href="./files/regulamin_budzetu_obywatelskiego.pdf" download class="text-blue-600 hover:underline">Pobierz</a>
+                </div>
+                <!-- Dodaj nowe pliki tutaj -->
+            </div>
+            <p class="text-sm text-gray-500 mt-4">Wskazówka: Upewnij się, że pliki, do których linkujesz, znajdują się w folderze `files` w Twoim repozytorium GitHub.</p>
+        </section>
+
+        <!-- Stopka -->
+        <footer class="footer">
+            <p>&copy; 2025 Miasteczko Zawiczyn. Wszelkie prawa zastrzeżone.</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navButtons = document.querySelectorAll('.nav-button');
+            const contentSections = document.querySelectorAll('.content-section');
+
+            // Funkcja do pokazywania wybranej sekcji
+            function showSection(targetId) {
+                contentSections.forEach(section => {
+                    section.classList.remove('active');
+                });
+                document.getElementById(targetId).classList.add('active');
+            }
+
+            // Funkcja do aktywowania przycisku nawigacji
+            function activateButton(targetId) {
+                navButtons.forEach(button => {
+                    button.classList.remove('active');
+                });
+                document.querySelector(`[data-target="${targetId}"]`).classList.add('active');
+            }
+
+            // Obsługa kliknięć w przyciski nawigacji
+            navButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const targetId = button.dataset.target;
+                    showSection(targetId);
+                    activateButton(targetId);
+                });
+            });
+
+            // Upewnij się, że sekcja ogłoszeń jest aktywna po załadowaniu strony
+            showSection('announcements-section');
+            activateButton('announcements-section');
+        });
+    </script>
+</body>
+</html>
