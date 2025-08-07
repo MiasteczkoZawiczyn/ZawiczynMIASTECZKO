@@ -120,12 +120,50 @@
         .download-item a:hover {
             color: #1e40af;
         }
-        .footer {
+        .subsection-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            margin-bottom: 1rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            color: #ffffff;
+            background-color: #3b82f6;
+            transition: all 0.3s ease;
+            cursor: pointer;
             text-align: center;
-            padding: 2rem;
-            margin-top: 2rem;
-            color: #6b7280;
-            font-size: 0.9rem;
+            white-space: nowrap;
+            box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.4);
+        }
+        .subsection-button:hover {
+            background-color: #2563eb;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-weight: 500;
+            color: #1e40af;
+            background-color: #eff6ff;
+            border: 1px solid #dbeafe;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .back-button:hover {
+            background-color: #dbeafe;
+        }
+
+        .pkm-sub-section {
+            display: none;
+        }
+        .pkm-sub-section.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in-out;
         }
     </style>
 </head>
@@ -178,19 +216,19 @@
                     <p class="text-sm text-gray-500 mt-2">Data publikacji: 2025-08-07</p>
                 </div>
                <div class="announcement-item">
-                        <h3>Przystankowe zapowiedzi głosowe.</h3>
-                        <p>Podczas podróży naszymi pojazdami mogą Państwo usłyszeć komunikaty głosowe zapowiadające kolejne przystanki, które nagrał pan Maciej. Dodatkowo, przy uruchamianiu systemu odtwarzany jest sygnał dźwiękowy „Zenox - Technologia Przyszłości”. Życzymy Państwu przyjemnej podróży z PKM Zawiczyn!</p>
-                        <div class="mt-4">
-                            <span class="block text-sm font-medium text-gray-700 mb-2">Komunikat Uruchamiania ZenoX</span>
-                            <audio controls class="w-full">
-                                <source src="files/ZenoxURUCHAMIANIE.mp3" type="audio/mpeg">
-                                Twój przeglądarka nie obsługuje elementu audio.
-                            </audio>
-                        </div>
-                        <p class="text-sm text-gray-500 mt-2">Data publikacji: 2025-08-07</p>
+                    <h3>Przystankowe zapowiedzi głosowe.</h3>
+                    <p>Podczas podróży naszymi pojazdami mogą Państwo usłyszeć komunikaty głosowe zapowiadające kolejne przystanki, które nagrał pan Maciej. Dodatkowo, przy uruchamianiu systemu odtwarzany jest sygnał dźwiękowy „Zenox - Technologia Przyszłości”. Życzymy Państwu przyjemnej podróży z PKM Zawiczyn!</p>
+                    <div class="mt-4">
+                        <span class="block text-sm font-medium text-gray-700 mb-2">Komunikat Uruchamiania ZenoX</span>
+                        <audio controls class="w-full">
+                            <source src="files/ZenoxURUCHAMIANIE.mp3" type="audio/mpeg">
+                            Twój przeglądarka nie obsługuje elementu audio.
+                        </audio>
                     </div>
+                    <p class="text-sm text-gray-500 mt-2">Data publikacji: 2025-08-07</p>
                 </div>
-            </section>
+            </div>
+        </section>
 
         <!-- Sekcja O nas -->
         <section id="about-section" class="content-section">
@@ -254,37 +292,65 @@
             <p class="mt-8 text-lg">Zapraszamy do kontaktu!</p>
         </section>
 
-        <!-- Sekcja PKM Zawiczyn -->
+        <!-- Sekcja PKM Zawiczyn (zmieniona, teraz z podstronami) -->
         <section id="pkm-section" class="content-section">
             <h2 class="text-3xl font-bold text-blue-700 mb-6">PKM Zawiczyn</h2>
-            <p class="mb-4 text-lg">Przedsiębiorstwo Komunikacji Miejskiej Zawiczyn (PKM Zawiczyn) zapewnia mieszkańcom i odwiedzającym wygodny i ekologiczny transport na terenie miasta i okolic. Nasza flota autobusów stale się rozwija, aby sprostać rosnącym potrzebom komunikacyjnym.</p>
-            <p class="mb-4 text-lg">Na tej stronie znajdziesz najważniejsze informacje dotyczące rozkładów jazdy, biletów oraz zmian w funkcjonowaniu komunikacji miejskiej.</p>
-            <h3 class="text-xl font-semibold text-blue-600 mb-2 mt-6">Przydatne linki:</h3>
-            <ul class="list-none space-y-2">
-                <li><a href="#" class="text-blue-600 hover:underline flex items-center gap-2" target="_blank">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07L10 6.5"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07L14 17.5"/></svg>
-                    <span>Rozkład jazdy autobusów (link zewnętrzny)</span>
-                </a></li>
-                <li><a href="#" class="text-blue-600 hover:underline flex items-center gap-2" target="_blank">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-ticket"><path d="M2 9a3 3 0 0 1 0 6v-6Z"/><path d="M22 9a3 3 0 0 0 0 6v-6Z"/><path d="M10 21V3"/><path d="M14 21V3"/></svg>
-                    <span>Cennik biletów (link zewnętrzny)</span>
-                </a></li>
-                <li><a href="#" class="text-blue-600 hover:underline flex items-center gap-2" target="_blank">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/></svg>
-                    <span>Mapa linii komunikacyjnych (link zewnętrzny)</span>
-                </a></li>
-            </ul>
-            <h3 class="text-xl font-semibold text-blue-600 mb-2 mt-6">Pliki do pobrania:</h3>
-            <div id="pkm-downloads-list">
-                <div class="download-item">
-                    <span>Regulamin Przewozów PKM ZAWICZYN (PDF)</span>
-                    <a href="files/regulamin_przew_PKM_Zawiczyn.pdf" download>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-download"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
-                        <span>Pobierz</span>
-                    </a>
+            <!-- Główna zawartość sekcji PKM, widoczna na początku -->
+            <div id="pkm-main-content">
+                <p class="mb-4 text-lg">Przedsiębiorstwo Komunikacji Miejskiej Zawiczyn (PKM Zawiczyn) zapewnia mieszkańcom i odwiedzającym wygodny i ekologiczny transport na terenie miasta i okolic. Nasza flota autobusów stale się rozwija, aby sprostać rosnącym potrzebom komunikacyjnym.</p>
+                <p class="mb-4 text-lg">Na tej stronie znajdziesz najważniejsze informacje dotyczące rozkładów jazdy, biletów oraz zmian w funkcjonowaniu komunikacji miejskiej.</p>
+                
+                <h3 class="text-xl font-semibold text-blue-600 mb-2 mt-6">Przydatne linki:</h3>
+                <!-- Nowe przyciski do podsekcji -->
+                <ul class="list-none space-y-2">
+                    <li>
+                        <button class="subsection-button" data-target-sub="pkm-timetable-subsection">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bus"><path d="M19 17h2l.6-3.3a1 1 0 0 0 0-.4L22 13"/><path d="M2 17h17"/><path d="M2 9h19c.6 0 .9.5.8 1.1L20 17H5.5"/><path d="M6 18v3"/><path d="M19 18v3"/><circle cx="17" cy="17" r="2"/><circle cx="7" cy="17" r="2"/></svg>
+                            <span>Rozkład jazdy autobusów</span>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="subsection-button" data-target-sub="pkm-tickets-subsection">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-ticket"><path d="M2 9a3 3 0 0 1 0 6v-6Z"/><path d="M22 9a3 3 0 0 0 0 6v-6Z"/><path d="M10 21V3"/><path d="M14 21V3"/></svg>
+                            <span>Cennik biletów</span>
+                        </button>
+                    </li>
+                </ul>
+                <h3 class="text-xl font-semibold text-blue-600 mb-2 mt-6">Pliki do pobrania:</h3>
+                <div id="pkm-downloads-list">
+                    <div class="download-item">
+                        <span>Regulamin Przewozów PKM ZAWICZYN (PDF)</span>
+                        <a href="files/regulamin_przew_PKM_Zawiczyn.pdf" download>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-download"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+                            <span>Pobierz</span>
+                        </a>
+                    </div>
                 </div>
+                <p class="text-sm text-gray-500 mt-4">PKM Zawiczyn. Wszelkie Prawa Zastrzeżone.</p>
             </div>
-            <p class="text-sm text-gray-500 mt-4">PKM Zawiczyn. Wszelkie Prawa Zastrzeżone.</p>
+
+            <!-- Podsekcja - Rozkład Jazdy (domyślnie ukryta) -->
+            <div id="pkm-timetable-subsection" class="pkm-sub-section">
+                <button class="back-button" data-target-sub="pkm-main-content">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-left"><path d="m15 18-6-6 6-6"/></svg>
+                    <span>Powrót do PKM Zawiczyn</span>
+                </button>
+                <h3 class="text-3xl font-bold text-blue-700 mb-4">Rozkład Jazdy Autobusów</h3>
+                <p class="mb-4 text-lg">Poniżej znajdziesz aktualny rozkład jazdy autobusów PKM Zawiczyn. Zapraszamy do zapoznania się z trasami i godzinami odjazdów, aby zaplanować swoją podróż.</p>
+                </a>
+            </div>
+
+            <!-- Podsekcja - Cennik Biletów (domyślnie ukryta) -->
+            <div id="pkm-tickets-subsection" class="pkm-sub-section">
+                <button class="back-button" data-target-sub="pkm-main-content">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-left"><path d="m15 18-6-6 6-6"/></svg>
+                    <span>Powrót do PKM Zawiczyn</span>
+                </button>
+                <h3 class="text-3xl font-bold text-blue-700 mb-4">Cennik Biletów</h3>
+                <p class="mb-4 text-lg">Przedstawiamy aktualny cennik biletów jednorazowych oraz okresowych. Wybierz opcję, która najbardziej odpowiada Twoim potrzebom.</p>
+                </a>
+            </div>
+
         </section>
 
         <!-- Sekcja Pliki do pobrania -->
@@ -314,8 +380,14 @@
         document.addEventListener('DOMContentLoaded', () => {
             const navButtons = document.querySelectorAll('.nav-button');
             const contentSections = document.querySelectorAll('.content-section');
+            
+            // Nowe elementy do obsługi podsekcji PKM
+            const pkmMainContent = document.getElementById('pkm-main-content');
+            const pkmSubsectionButtons = document.querySelectorAll('#pkm-section .subsection-button');
+            const pkmSubsections = document.querySelectorAll('#pkm-section .pkm-sub-section');
+            const backButtons = document.querySelectorAll('#pkm-section .back-button');
 
-            // Funkcja do pokazywania wybranej sekcji
+            // Funkcja do pokazywania wybranej głównej sekcji
             function showSection(targetId) {
                 contentSections.forEach(section => {
                     section.classList.remove('active');
@@ -323,6 +395,12 @@
                 const targetSection = document.getElementById(targetId);
                 if (targetSection) {
                     targetSection.classList.add('active');
+                    
+                    // Resetowanie widoku PKM przy przejściu na inną sekcję
+                    if (targetId !== 'pkm-section') {
+                        pkmMainContent.classList.remove('hidden');
+                        pkmSubsections.forEach(sub => sub.classList.remove('active'));
+                    }
                 }
             }
 
@@ -337,12 +415,38 @@
                 }
             }
 
-            // Obsługa kliknięć w przyciski nawigacji
+            // Obsługa kliknięć w główne przyciski nawigacji
             navButtons.forEach(button => {
                 button.addEventListener('click', () => {
                     const targetId = button.dataset.target;
                     showSection(targetId);
                     activateButton(targetId);
+                });
+            });
+
+            // Obsługa kliknięć w przyciski podsekcji PKM
+            pkmSubsectionButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const targetSubId = button.dataset.targetSub;
+                    // Ukryj główną zawartość PKM
+                    pkmMainContent.classList.add('hidden');
+                    // Pokaż odpowiednią podsekcję
+                    pkmSubsections.forEach(sub => sub.classList.remove('active'));
+                    const targetSub = document.getElementById(targetSubId);
+                    if (targetSub) {
+                        targetSub.classList.add('active');
+                    }
+                });
+            });
+            
+            // Obsługa przycisku "Powrót" w podsekcjach PKM
+            backButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const targetSubId = button.dataset.targetSub;
+                    // Ukryj bieżącą podsekcję
+                    button.closest('.pkm-sub-section').classList.remove('active');
+                    // Pokaż główną zawartość PKM
+                    pkmMainContent.classList.remove('hidden');
                 });
             });
 
