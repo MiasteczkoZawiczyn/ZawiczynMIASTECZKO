@@ -6,7 +6,6 @@
     <title>Miasteczko Zawiczyn - Oficjalna Strona</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Ikony Lucide do przełącznika motywu -->
     <script src="https://unpkg.com/lucide@latest/dist/lucide.js"></script>
     <style>
         body {
@@ -17,7 +16,7 @@
         }
 
         body.dark {
-            background-color: #1a202c;
+            background-color: #0f172a;
             color: #e2e8f0;
         }
         
@@ -39,7 +38,7 @@
         }
 
         .dark .header {
-            background-color: #2d3748;
+            background-color: #1e293b;
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.15);
         }
 
@@ -75,12 +74,12 @@
         }
         
         .dark .nav-button:not(.active) {
-            color: #cbd5e0;
+            color: #94a3b8;
         }
         
         .dark .nav-button:not(.active):hover {
-            background-color: #4a5568;
-            color: #90cdf4;
+            background-color: #334155;
+            color: #60a5fa;
         }
 
         .content-section {
@@ -93,7 +92,7 @@
         }
 
         .dark .content-section {
-            background-color: #2d3748;
+            background-color: #1e293b;
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.15);
         }
 
@@ -124,8 +123,9 @@
         }
         
         .dark .announcement-item {
-            background-color: #2b3543;
+            background-color: #1e293b;
             border-left: 6px solid #63b3ed;
+            border: 1px solid #334155;
         }
 
         .announcement-item:hover {
@@ -145,7 +145,7 @@
         }
         
         .dark .announcement-item h3 {
-            color: #90cdf4;
+            color: #60a5fa;
         }
 
         .announcement-item p {
@@ -163,11 +163,11 @@
         }
         
         .dark .download-item {
-            border-bottom-color: #4a5568;
+            border-bottom-color: #334155;
         }
         
         .dark .download-item:hover {
-            background-color: #2d3748;
+            background-color: #1e293b;
         }
 
         .download-item:hover {
@@ -189,7 +189,7 @@
         }
         
         .dark .download-item a {
-            color: #63b3ed;
+            color: #60a5fa;
         }
 
         .download-item a:hover {
@@ -197,7 +197,7 @@
         }
         
         .dark .download-item a:hover {
-            color: #90cdf4;
+            color: #3b82f6;
         }
 
         .subsection-button {
@@ -218,7 +218,7 @@
         }
         
         .dark .subsection-button {
-            background-color: #63b3ed;
+            background-color: #60a5fa;
             box-shadow: 0 4px 6px -1px rgba(99, 179, 237, 0.4);
         }
 
@@ -227,7 +227,7 @@
         }
         
         .dark .subsection-button:hover {
-            background-color: #4299e1;
+            background-color: #3b82f6;
         }
 
         .back-button {
@@ -246,13 +246,13 @@
         }
         
         .dark .back-button {
-            color: #90cdf4;
-            background-color: #4a5568;
-            border-color: #4a5568;
+            color: #94a3b8;
+            background-color: #334155;
+            border-color: #475569;
         }
         
         .dark .back-button:hover {
-            background-color: #637187;
+            background-color: #475569;
         }
 
         .back-button:hover {
@@ -268,21 +268,20 @@
             animation: fadeIn 0.5s ease-in-out;
         }
         
-        .dark .text-blue-700 { color: #90cdf4; }
-        .dark .text-blue-600 { color: #63b3ed; }
-        .dark .text-gray-500 { color: #a0aec0; }
+        .dark .text-blue-700 { color: #60a5fa; }
+        .dark .text-blue-600 { color: #93c5fd; }
+        .dark .text-gray-500 { color: #94a3b8; }
         .dark .text-gray-700 { color: #cbd5e0; }
         .dark .shadow { box-shadow: 0 4px 6px -1px rgba(0,0,0,0.2), 0 2px 4px -1px rgba(0,0,0,0.12); }
-        .dark .bg-white { background-color: #2d3748; }
-        .dark .border-gray-200 { border-color: #4a5568; }
-        .dark .bg-gray-100 { background-color: #4a5568; }
+        .dark .bg-white { background-color: #1e293b; }
+        .dark .border-gray-200 { border-color: #334155; }
+        .dark .bg-gray-100 { background-color: #334155; }
         .dark .text-gray-800 { color: #e2e8f0; }
-        .dark .bg-green-100 { background-color: #2f855a; }
-        .dark .text-green-800 { color: #e6fffa; }
-        .dark .bg-red-100 { background-color: #c53030; }
-        .dark .text-red-800 { color: #fed7d7; }
+        .dark .bg-green-100 { background-color: #166534; }
+        .dark .text-green-800 { color: #dcfce7; }
+        .dark .bg-red-100 { background-color: #991b1b; }
+        .dark .text-red-800 { color: #fee2e2; }
         
-        /* Styl dla przycisku przełączania motywu */
         .theme-toggle-button {
             background-color: transparent;
             border: none;
@@ -296,10 +295,10 @@
             background-color: #e2e8f0;
         }
         .dark .theme-toggle-button {
-            color: #a0aec0;
+            color: #94a3b8;
         }
         .dark .theme-toggle-button:hover {
-            background-color: #4a5568;
+            background-color: #334155;
         }
     </style>
 </head>
@@ -541,12 +540,10 @@
             const pkmSubsections = document.querySelectorAll('#pkm-section .pkm-sub-section');
             const backButtons = document.querySelectorAll('#pkm-section .back-button');
 
-            // --- Logika przełączania motywu ---
             const themeToggleButton = document.getElementById('theme-toggle-btn');
             const sunIcon = document.getElementById('sun-icon');
             const moonIcon = document.getElementById('moon-icon');
 
-            // Funkcja do ustawiania motywu i zapisywania w localStorage
             const setTheme = (theme) => {
                 if (theme === 'dark') {
                     document.body.classList.add('dark');
@@ -561,29 +558,24 @@
                 }
             };
 
-            // Funkcja do wczytywania motywu z localStorage
             const loadTheme = () => {
                 const savedTheme = localStorage.getItem('theme');
                 if (savedTheme) {
                     setTheme(savedTheme);
                 } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                    // Domyślnie użyj motywu systemowego, jeśli nie ma zapisanego
                     setTheme('dark');
                 } else {
                     setTheme('light');
                 }
             };
 
-            // Przełączanie motywu po kliknięciu
             themeToggleButton.addEventListener('click', () => {
                 const currentTheme = document.body.classList.contains('dark') ? 'dark' : 'light';
                 const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
                 setTheme(newTheme);
             });
             
-            // Wczytaj motyw na początku
             loadTheme();
-            // --- Koniec logiki przełączania motywu ---
 
             function showSection(targetId) {
                 contentSections.forEach(section => {
@@ -691,3 +683,4 @@
     </script>
 </body>
 </html>
+
