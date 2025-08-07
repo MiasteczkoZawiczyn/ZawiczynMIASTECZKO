@@ -6,17 +6,27 @@
     <title>Miasteczko Zawiczyn - Oficjalna Strona</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Ikony Lucide do przełącznika motywu -->
+    <script src="https://unpkg.com/lucide@latest/dist/lucide.js"></script>
     <style>
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f8fafc;
             color: #333;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
+
+        body.dark {
+            background-color: #1a202c;
+            color: #e2e8f0;
+        }
+        
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 1rem;
         }
+
         .header {
             background-color: #ffffff;
             border-radius: 1rem;
@@ -27,12 +37,19 @@
             align-items: center;
             gap: 1.5rem;
         }
+
+        .dark .header {
+            background-color: #2d3748;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.15);
+        }
+
         @media (min-width: 768px) {
             .header {
                 flex-direction: row;
                 justify-content: space-between;
             }
         }
+
         .nav-button {
             padding: 0.75rem 1.5rem;
             border-radius: 9999px;
@@ -45,15 +62,27 @@
             align-items: center;
             gap: 0.5rem;
         }
+
         .nav-button.active {
             background-color: #3b82f6;
             color: #ffffff;
             box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.4), 0 2px 4px -1px rgba(59, 130, 246, 0.2);
         }
+
         .nav-button:not(.active):hover {
             background-color: #eff6ff;
             color: #1d4ed8;
         }
+        
+        .dark .nav-button:not(.active) {
+            color: #cbd5e0;
+        }
+        
+        .dark .nav-button:not(.active):hover {
+            background-color: #4a5568;
+            color: #90cdf4;
+        }
+
         .content-section {
             display: none;
             background-color: #ffffff;
@@ -62,14 +91,29 @@
             padding: 2.5rem;
             margin-top: 2rem;
         }
+
+        .dark .content-section {
+            background-color: #2d3748;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.15);
+        }
+
         .content-section.active {
             display: block;
             animation: fadeIn 0.5s ease-in-out;
         }
+
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
+
         .announcement-item {
             background-color: #f0f9ff;
             border-left: 6px solid #3b82f6;
@@ -78,20 +122,37 @@
             margin-bottom: 1.5rem;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
+        
+        .dark .announcement-item {
+            background-color: #2b3543;
+            border-left: 6px solid #63b3ed;
+        }
+
         .announcement-item:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
+        
+        .dark .announcement-item:hover {
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
         .announcement-item h3 {
             font-weight: 700;
             color: #1e40af;
             margin-bottom: 0.5rem;
             font-size: 1.25rem;
         }
+        
+        .dark .announcement-item h3 {
+            color: #90cdf4;
+        }
+
         .announcement-item p {
             font-size: 1rem;
             line-height: 1.6;
         }
+
         .download-item {
             padding: 1rem;
             border-bottom: 1px solid #e5e7eb;
@@ -100,12 +161,23 @@
             align-items: center;
             transition: background-color 0.3s;
         }
+        
+        .dark .download-item {
+            border-bottom-color: #4a5568;
+        }
+        
+        .dark .download-item:hover {
+            background-color: #2d3748;
+        }
+
         .download-item:hover {
             background-color: #f9fafb;
         }
+
         .download-item:last-child {
             border-bottom: none;
         }
+
         .download-item a {
             color: #2563eb;
             font-weight: 600;
@@ -115,9 +187,19 @@
             align-items: center;
             gap: 0.5rem;
         }
+        
+        .dark .download-item a {
+            color: #63b3ed;
+        }
+
         .download-item a:hover {
             color: #1e40af;
         }
+        
+        .dark .download-item a:hover {
+            color: #90cdf4;
+        }
+
         .subsection-button {
             display: inline-flex;
             align-items: center;
@@ -134,8 +216,18 @@
             white-space: nowrap;
             box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.4);
         }
+        
+        .dark .subsection-button {
+            background-color: #63b3ed;
+            box-shadow: 0 4px 6px -1px rgba(99, 179, 237, 0.4);
+        }
+
         .subsection-button:hover {
             background-color: #2563eb;
+        }
+        
+        .dark .subsection-button:hover {
+            background-color: #4299e1;
         }
 
         .back-button {
@@ -152,6 +244,17 @@
             transition: all 0.3s ease;
             cursor: pointer;
         }
+        
+        .dark .back-button {
+            color: #90cdf4;
+            background-color: #4a5568;
+            border-color: #4a5568;
+        }
+        
+        .dark .back-button:hover {
+            background-color: #637187;
+        }
+
         .back-button:hover {
             background-color: #dbeafe;
         }
@@ -159,9 +262,44 @@
         .pkm-sub-section {
             display: none;
         }
+
         .pkm-sub-section.active {
             display: block;
             animation: fadeIn 0.5s ease-in-out;
+        }
+        
+        .dark .text-blue-700 { color: #90cdf4; }
+        .dark .text-blue-600 { color: #63b3ed; }
+        .dark .text-gray-500 { color: #a0aec0; }
+        .dark .text-gray-700 { color: #cbd5e0; }
+        .dark .shadow { box-shadow: 0 4px 6px -1px rgba(0,0,0,0.2), 0 2px 4px -1px rgba(0,0,0,0.12); }
+        .dark .bg-white { background-color: #2d3748; }
+        .dark .border-gray-200 { border-color: #4a5568; }
+        .dark .bg-gray-100 { background-color: #4a5568; }
+        .dark .text-gray-800 { color: #e2e8f0; }
+        .dark .bg-green-100 { background-color: #2f855a; }
+        .dark .text-green-800 { color: #e6fffa; }
+        .dark .bg-red-100 { background-color: #c53030; }
+        .dark .text-red-800 { color: #fed7d7; }
+        
+        /* Styl dla przycisku przełączania motywu */
+        .theme-toggle-button {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 9999px;
+            color: #4a5568;
+            transition: all 0.3s ease;
+        }
+        .theme-toggle-button:hover {
+            background-color: #e2e8f0;
+        }
+        .dark .theme-toggle-button {
+            color: #a0aec0;
+        }
+        .dark .theme-toggle-button:hover {
+            background-color: #4a5568;
         }
     </style>
 </head>
@@ -172,7 +310,7 @@
                 <img src="https://cdn.discordapp.com/icons/1385291492746072267/b62512ac966be9d0eb79d02dc5e1b445.png?size=1024" alt="Logo Miasta Zawiczyn" class="w-16 h-16 rounded-full shadow-md">
                 <h1 class="text-3xl font-bold text-blue-700">Miasteczko Zawiczyn</h1>
             </div>
-            <nav class="flex flex-wrap justify-center md:justify-end gap-2 md:gap-4 mt-4 md:mt-0">
+            <nav class="flex flex-wrap justify-center md:justify-end items-center gap-2 md:gap-4 mt-4 md:mt-0">
                 <button class="nav-button active" data-target="announcements-section">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-megaphone"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>
                     <span>Ogłoszenia</span>
@@ -193,6 +331,10 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-download"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
                     <span>Pliki do pobrania</span>
                 </button>
+                <button id="theme-toggle-btn" class="theme-toggle-button">
+                    <svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-moon"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+                    <svg id="sun-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun hidden"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+                </button>
             </nav>
         </header>
 
@@ -200,10 +342,10 @@
             <h2 class="text-3xl font-bold text-blue-700 mb-6">Najnowsze Ogłoszenia</h2>
             <div id="announcements-list">
                 <div class="announcement-item">
-        <p class="text-sm text-gray-500 mt-2">Edycja ogłoszenia:</p>
+                    <p class="text-sm text-gray-500 mt-2">Edytowano ogłoszenie:</p>
                     <h3>Koniec prac nad stroną.</h3>
                     <p>Z przyjemnością informujemy, że prace nad naszą stroną Miasta, zostały skończone. W przyszłości planujemy dodać galerię zdjeć i wiele innych rzeczy. Życzymy miłego korzystania z naszej strony Miasteczka Zawiczyn!</p>
-        <p class="text-sm text-gray-500 mt-2">____Stara Wersja ogłoszenia:____</p>
+                    <p class="text-sm text-gray-500 mt-2">Stara Wersja ogłoszenia:</p>
                     <h3>Nowa strona Miasteczka Zawiczyn.</h3>
                     <p>Z przyjemnością informujemy, że w dniu 5 sierpnia 2025 roku została uruchomiona oficjalna strona internetowa Miasta. Serdecznie zapraszamy do odwiedzenia witryny, gdzie znajdą Państwo wszelkie istotne informacje na temat naszej miejscowości oraz bieżących wydarzeń.</p>
                     <p class="text-sm text-gray-500 mt-2">Data publikacji: 2025-08-07. Data edytowania: 2025-08-07</p>
@@ -213,7 +355,7 @@
                     <p>Z przyjemnością informujemy, że prace nad naszą nową mapą oraz zintegrowanymi systemami postępują zgodnie z planem. Dokładamy wszelkich starań, aby każdy szczegół był dopracowany, a ostateczny efekt spełnił Państwa oczekiwania. Dziękujemy za cierpliwość i już wkrótce będziemy mogli podzielić się efektami naszej pracy!</p>
                     <p class="text-sm text-gray-500 mt-2">Data publikacji: 2025-08-07</p>
                 </div>
-               <div class="announcement-item">
+                <div class="announcement-item">
                     <h3>Przystankowe zapowiedzi głosowe.</h3>
                     <p>Podczas podróży naszymi pojazdami mogą Państwo usłyszeć komunikaty głosowe zapowiadające kolejne przystanki, które nagrał pan Maciej. Dodatkowo, przy uruchamianiu systemu odtwarzany jest sygnał dźwiękowy „Zenox - Technologia Przyszłości”. Życzymy Państwu przyjemnej podróży z PKM Zawiczyn!</p>
                     <div class="mt-4">
@@ -244,7 +386,7 @@
                     <p class="mb-4">12-452 Zawiczyn</p>
                     <p class="mb-2"><strong>Telefon:</strong> +48 690 123 456</p>
                     <p class="mb-2">Zalecamy kontakt przez e-maila:</p>
-                    <p class="mb-4"><strong>E-mail:</strong> <a href="mailto:biuro.zawiczyn@zawiczyn.pl" class="text-blue-600 hover:underline">biuro.zawiczyn@zawiczyn.pl</a></p>
+                    <p class="mb-4"><strong>E-mail:</strong> <a href="mailto:miasteczkozawiczyn.biuro@gmail.com" class="text-blue-600 hover:underline">biuro.zawiczyn@zawiczyn.pl</a></p>
                     <div class="mt-6">
                         <h3 class="text-xl font-semibold text-blue-600 mb-2">Godziny otwarcia Urzędu:</h3>
                         <ul class="space-y-1">
@@ -333,7 +475,7 @@
                             <span>Pobierz</span>
                         </a>
                     </div>
-           <div class="download-item">
+                    <div class="download-item">
                         <span>Rozkład Jazdy 167 PKM Zawiczyn. Ważny od 07.08.2025 (PDF)</span>
                         <a href="files/Rozklad_jazdy_167_wazny07082025.pdf" download>
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-download"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
@@ -398,6 +540,50 @@
             const pkmSubsectionButtons = document.querySelectorAll('#pkm-section .subsection-button');
             const pkmSubsections = document.querySelectorAll('#pkm-section .pkm-sub-section');
             const backButtons = document.querySelectorAll('#pkm-section .back-button');
+
+            // --- Logika przełączania motywu ---
+            const themeToggleButton = document.getElementById('theme-toggle-btn');
+            const sunIcon = document.getElementById('sun-icon');
+            const moonIcon = document.getElementById('moon-icon');
+
+            // Funkcja do ustawiania motywu i zapisywania w localStorage
+            const setTheme = (theme) => {
+                if (theme === 'dark') {
+                    document.body.classList.add('dark');
+                    sunIcon.classList.remove('hidden');
+                    moonIcon.classList.add('hidden');
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    document.body.classList.remove('dark');
+                    sunIcon.classList.add('hidden');
+                    moonIcon.classList.remove('hidden');
+                    localStorage.setItem('theme', 'light');
+                }
+            };
+
+            // Funkcja do wczytywania motywu z localStorage
+            const loadTheme = () => {
+                const savedTheme = localStorage.getItem('theme');
+                if (savedTheme) {
+                    setTheme(savedTheme);
+                } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    // Domyślnie użyj motywu systemowego, jeśli nie ma zapisanego
+                    setTheme('dark');
+                } else {
+                    setTheme('light');
+                }
+            };
+
+            // Przełączanie motywu po kliknięciu
+            themeToggleButton.addEventListener('click', () => {
+                const currentTheme = document.body.classList.contains('dark') ? 'dark' : 'light';
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                setTheme(newTheme);
+            });
+            
+            // Wczytaj motyw na początku
+            loadTheme();
+            // --- Koniec logiki przełączania motywu ---
 
             function showSection(targetId) {
                 contentSections.forEach(section => {
