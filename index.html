@@ -4,14 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Miasteczko Zawiczyn - Oficjalna Strona</title>
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f8fafc; /* Bardzo jasny szary */
+            background-color: #f8fafc;
             color: #333;
         }
         .container {
@@ -37,7 +35,7 @@
         }
         .nav-button {
             padding: 0.75rem 1.5rem;
-            border-radius: 9999px; /* Całkowicie zaokrąglone rogi */
+            border-radius: 9999px;
             font-weight: 600;
             transition: all 0.3s ease;
             cursor: pointer;
@@ -48,16 +46,16 @@
             gap: 0.5rem;
         }
         .nav-button.active {
-            background-color: #3b82f6; /* Niebieski */
+            background-color: #3b82f6;
             color: #ffffff;
             box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.4), 0 2px 4px -1px rgba(59, 130, 246, 0.2);
         }
         .nav-button:not(.active):hover {
-            background-color: #eff6ff; /* Jasnoniebieski na najechaniu */
-            color: #1d4ed8; /* Ciemniejszy niebieski */
+            background-color: #eff6ff;
+            color: #1d4ed8;
         }
         .content-section {
-            display: none; /* Domyślnie ukryte */
+            display: none;
             background-color: #ffffff;
             border-radius: 1rem;
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
@@ -65,7 +63,7 @@
             margin-top: 2rem;
         }
         .content-section.active {
-            display: block; /* Aktywna sekcja widoczna */
+            display: block;
             animation: fadeIn 0.5s ease-in-out;
         }
         @keyframes fadeIn {
@@ -73,8 +71,8 @@
             to { opacity: 1; transform: translateY(0); }
         }
         .announcement-item {
-            background-color: #f0f9ff; /* Bardzo jasny niebieski */
-            border-left: 6px solid #3b82f6; /* Niebieska ramka z lewej */
+            background-color: #f0f9ff;
+            border-left: 6px solid #3b82f6;
             padding: 1.5rem;
             border-radius: 0.75rem;
             margin-bottom: 1.5rem;
@@ -86,7 +84,7 @@
         }
         .announcement-item h3 {
             font-weight: 700;
-            color: #1e40af; /* Ciemnoniebieski */
+            color: #1e40af;
             margin-bottom: 0.5rem;
             font-size: 1.25rem;
         }
@@ -169,10 +167,8 @@
 </head>
 <body class="bg-slate-50">
     <div class="container">
-        <!-- Nagłówek i nawigacja -->
         <header class="header">
             <div class="flex items-center gap-4">
-                <!-- Logo miasta -->
                 <img src="https://cdn.discordapp.com/icons/1385291492746072267/b62512ac966be9d0eb79d02dc5e1b445.png?size=1024" alt="Logo Miasta Zawiczyn" class="w-16 h-16 rounded-full shadow-md">
                 <h1 class="text-3xl font-bold text-blue-700">Miasteczko Zawiczyn</h1>
             </div>
@@ -200,11 +196,9 @@
             </nav>
         </header>
 
-        <!-- Sekcja Ogłoszenia (domyślnie aktywna) -->
         <section id="announcements-section" class="content-section active">
             <h2 class="text-3xl font-bold text-blue-700 mb-6">Najnowsze Ogłoszenia</h2>
             <div id="announcements-list">
-                <!-- Przykładowe ogłoszenia -->
                 <div class="announcement-item">
                     <h3>Prace nad grą.</h3>
                     <p>Z przyjemnością informujemy, że prace nad naszą nową mapą oraz zintegrowanymi systemami postępują zgodnie z planem. Dokładamy wszelkich starań, aby każdy szczegół był dopracowany, a ostateczny efekt spełnił Państwa oczekiwania. Dziękujemy za cierpliwość i już wkrótce będziemy mogli podzielić się efektami naszej pracy!</p>
@@ -230,7 +224,6 @@
             </div>
         </section>
 
-        <!-- Sekcja O nas -->
         <section id="about-section" class="content-section">
             <h2 class="text-3xl font-bold text-blue-700 mb-6">O nas</h2>
             <p class="mb-4 text-lg">Witamy na oficjalnej stronie internetowej Miasteczka Zawiczyn! Jesteśmy dynamicznie rozwijającą się społecznością, położoną w malowniczej okolicy, która łączy tradycję z nowoczesnością. Nasze miasto szczyci się bogatą historią, pięknymi terenami zielonymi oraz aktywnymi mieszkańcami.</p>
@@ -238,20 +231,16 @@
             <p class="text-lg">Zapraszamy do aktywnego uczestnictwa w życiu Zawiczyna!</p>
         </section>
 
-        <!-- Sekcja Kontakt -->
         <section id="contact-section" class="content-section">
             <h2 class="text-3xl font-bold text-blue-700 mb-6">Kontakt</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Informacje kontaktowe -->
                 <div>
                     <h3 class="text-xl font-semibold text-blue-600 mb-2">Urząd Miasta Zawiczyn</h3>
                     <p class="mb-2">ul. Warszawska 43a/43b</p>
                     <p class="mb-4">12-452 Zawiczyn</p>
                     <p class="mb-2"><strong>Telefon:</strong> +48 690 123 456</p>
                     <p class="mb-2">Zalecamy kontakt przez e-maila:</p>
-                    <!-- Poprawiono adres e-mail, aby pasował do wyświetlanej treści -->
                     <p class="mb-4"><strong>E-mail:</strong> <a href="mailto:biuro.zawiczyn@zawiczyn.pl" class="text-blue-600 hover:underline">biuro.zawiczyn@zawiczyn.pl</a></p>
-                    <!-- Godziny otwarcia -->
                     <div class="mt-6">
                         <h3 class="text-xl font-semibold text-blue-600 mb-2">Godziny otwarcia Urzędu:</h3>
                         <ul class="space-y-1">
@@ -263,10 +252,8 @@
                         </ul>
                     </div>
                 </div>
-                <!-- Formularz kontaktowy -->
                 <div class="p-6 bg-white rounded-lg shadow-md border border-gray-200">
                     <h3 class="text-xl font-semibold text-blue-600 mb-4">Wyślij wiadomość</h3>
-                    <!-- Formspree Endpoint -->
                     <form id="contact-form" action="https://formspree.io/f/xanbledp" method="POST">
                         <div class="mb-4">
                             <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Imię i nazwisko</label>
@@ -286,23 +273,19 @@
                             </button>
                         </div>
                     </form>
-                    <!-- Komunikat po wysłaniu -->
                     <div id="response-message" class="mt-4 p-4 rounded-lg text-sm text-center hidden"></div>
                 </div>
             </div>
             <p class="mt-8 text-lg">Zapraszamy do kontaktu!</p>
         </section>
 
-        <!-- Sekcja PKM Zawiczyn (zmieniona, teraz z podstronami) -->
         <section id="pkm-section" class="content-section">
             <h2 class="text-3xl font-bold text-blue-700 mb-6">PKM Zawiczyn</h2>
-            <!-- Główna zawartość sekcji PKM, widoczna na początku -->
             <div id="pkm-main-content">
                 <p class="mb-4 text-lg">Przedsiębiorstwo Komunikacji Miejskiej Zawiczyn (PKM Zawiczyn) zapewnia mieszkańcom i odwiedzającym wygodny i ekologiczny transport na terenie miasta i okolic. Nasza flota autobusów stale się rozwija, aby sprostać rosnącym potrzebom komunikacyjnym.</p>
                 <p class="mb-4 text-lg">Na tej stronie znajdziesz najważniejsze informacje dotyczące rozkładów jazdy, biletów oraz zmian w funkcjonowaniu komunikacji miejskiej.</p>
                 
                 <h3 class="text-xl font-semibold text-blue-600 mb-2 mt-6">Przydatne linki:</h3>
-                <!-- Nowe przyciski do podsekcji -->
                 <ul class="list-none space-y-2">
                     <li>
                         <button class="subsection-button" data-target-sub="pkm-timetable-subsection">
@@ -330,7 +313,6 @@
                 <p class="text-sm text-gray-500 mt-4">PKM Zawiczyn. Wszelkie Prawa Zastrzeżone.</p>
             </div>
 
-            <!-- Podsekcja - Rozkład Jazdy (domyślnie ukryta) -->
             <div id="pkm-timetable-subsection" class="pkm-sub-section">
                 <button class="back-button" data-target-sub="pkm-main-content">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-left"><path d="m15 18-6-6 6-6"/></svg>
@@ -357,7 +339,6 @@
                 </div>
             </div>
 
-            <!-- Podsekcja - Cennik Biletów (domyślnie ukryta) -->
             <div id="pkm-tickets-subsection" class="pkm-sub-section">
                 <button class="back-button" data-target-sub="pkm-main-content">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-left"><path d="m15 18-6-6 6-6"/></svg>
@@ -365,7 +346,6 @@
                 </button>
                 <h3 class="text-3xl font-bold text-blue-700 mb-4">Cennik Biletów</h3>
                 <p class="mb-4 text-lg">Przedstawiamy aktualny cennik biletów jednorazowych oraz okresowych. Wybierz opcję, która najbardziej odpowiada Twoim potrzebom.</p>
-                <!-- Dodałem przykładowy plik do pobrania, tak jak w innych sekcjach -->
                 <h3 class="text-xl font-semibold text-blue-600 mb-2 mt-6">Cennik do pobrania:</h3>
                 <div class="download-item">
                     <span>Cennik biletów PKM Zawiczyn (PDF)</span>
@@ -378,12 +358,10 @@
 
         </section>
 
-        <!-- Sekcja Pliki do pobrania -->
         <section id="downloads-section" class="content-section">
             <h2 class="text-3xl font-bold text-blue-700 mb-6">Pliki do pobrania</h2>
             <p class="mb-4 text-lg">Poniżej znajdziesz listę dokumentów i formularzy, które możesz pobrać. Są to m.in. uchwały rady miasta, formularze wniosków, regulaminy i inne przydatne materiały.</p>
             <div id="downloads-list">
-                <!-- Przykładowy plik - możesz go edytować lub usunąć, gdy dodasz swoje własne pliki -->
                 <div class="download-item">
                     <span>Przykładowy dokument (PDF)</span>
                     <a href="files/przykładowy_dokument.pdf" download>
@@ -395,7 +373,6 @@
             <p class="text-sm text-gray-500 mt-4">Wkrótce więcej plików.</p>
         </section>
 
-        <!-- Stopka -->
         <footer class="footer mt-8 py-4 text-center text-gray-600 border-t border-gray-200">
             <p>&copy; 2025 Miasteczko Zawiczyn. Wszelkie prawa zastrzeżone.</p>
         </footer>
@@ -406,13 +383,11 @@
             const navButtons = document.querySelectorAll('.nav-button');
             const contentSections = document.querySelectorAll('.content-section');
             
-            // Nowe elementy do obsługi podsekcji PKM
             const pkmMainContent = document.getElementById('pkm-main-content');
             const pkmSubsectionButtons = document.querySelectorAll('#pkm-section .subsection-button');
             const pkmSubsections = document.querySelectorAll('#pkm-section .pkm-sub-section');
             const backButtons = document.querySelectorAll('#pkm-section .back-button');
 
-            // Funkcja do pokazywania wybranej głównej sekcji
             function showSection(targetId) {
                 contentSections.forEach(section => {
                     section.classList.remove('active');
@@ -421,7 +396,6 @@
                 if (targetSection) {
                     targetSection.classList.add('active');
                     
-                    // Resetowanie widoku PKM przy przejściu na inną sekcję
                     if (targetId !== 'pkm-section') {
                         pkmMainContent.classList.remove('hidden');
                         pkmSubsections.forEach(sub => sub.classList.remove('active'));
@@ -429,7 +403,6 @@
                 }
             }
 
-            // Funkcja do aktywowania przycisku nawigacji
             function activateButton(targetId) {
                 navButtons.forEach(button => {
                     button.classList.remove('active');
@@ -440,7 +413,6 @@
                 }
             }
 
-            // Obsługa kliknięć w główne przyciski nawigacji
             navButtons.forEach(button => {
                 button.addEventListener('click', () => {
                     const targetId = button.dataset.target;
@@ -449,13 +421,10 @@
                 });
             });
 
-            // Obsługa kliknięć w przyciski podsekcji PKM
             pkmSubsectionButtons.forEach(button => {
                 button.addEventListener('click', () => {
                     const targetSubId = button.dataset.targetSub;
-                    // Ukryj główną zawartość PKM
                     pkmMainContent.classList.add('hidden');
-                    // Pokaż odpowiednią podsekcję
                     pkmSubsections.forEach(sub => sub.classList.remove('active'));
                     const targetSub = document.getElementById(targetSubId);
                     if (targetSub) {
@@ -464,23 +433,18 @@
                 });
             });
             
-            // Obsługa przycisku "Powrót" w podsekcjach PKM
             backButtons.forEach(button => {
                 button.addEventListener('click', () => {
                     const targetSubId = button.dataset.targetSub;
-                    // Ukryj bieżącą podsekcję
                     button.closest('.pkm-sub-section').classList.remove('active');
-                    // Pokaż główną zawartość PKM
                     pkmMainContent.classList.remove('hidden');
                 });
             });
 
-            // Upewnij się, że sekcja ogłoszeń jest aktywna po załadowaniu strony
             const initialSectionId = 'announcements-section';
             showSection(initialSectionId);
             activateButton(initialSectionId);
 
-            // Obsługa formularza kontaktowego
             const contactForm = document.getElementById('contact-form');
             const responseMessage = document.getElementById('response-message');
 
@@ -492,7 +456,6 @@
                     const formData = new FormData(form);
                     const formProps = Object.fromEntries(formData);
                     
-                    // Pokazujemy komunikat ładowania
                     responseMessage.classList.remove('hidden');
                     responseMessage.classList.remove('bg-green-100', 'text-green-800', 'bg-red-100', 'text-red-800');
                     responseMessage.classList.add('bg-gray-100', 'text-gray-800');
