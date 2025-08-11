@@ -300,6 +300,13 @@
         .dark .theme-toggle-button:hover {
             background-color: #334155;
         }
+        
+        #pkm-login-form, #pkm-admin-panel {
+            display: none;
+        }
+        #pkm-login-form.active, #pkm-admin-panel.active {
+            display: block;
+        }
     </style>
 </head>
 <body class="bg-slate-50">
@@ -427,6 +434,72 @@
 
         <section id="pkm-section" class="content-section">
             <h2 class="text-3xl font-bold text-blue-700 mb-6">PKM Zawiczyn</h2>
+            
+            <!-- Login Form for Admin Panel -->
+            <div id="pkm-login-form" class="max-w-md mx-auto p-6 bg-white rounded-lg shadow-md border border-gray-200">
+                <h3 class="text-xl font-semibold text-blue-600 mb-4">Logowanie do panelu administracyjnego</h3>
+                <form id="admin-login-form" class="space-y-4">
+                    <div>
+                        <label for="admin-login" class="block text-sm font-medium text-gray-700">Login (e-mail)</label>
+                        <input type="email" id="admin-login" name="login" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200" required>
+                    </div>
+                    <div>
+                        <label for="admin-password" class="block text-sm font-medium text-gray-700">Hasło</label>
+                        <input type="password" id="admin-password" name="password" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200" required>
+                    </div>
+                    <div id="login-message" class="hidden p-3 text-sm rounded-md text-center"></div>
+                    <button type="submit" class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors duration-200">
+                        Zaloguj
+                    </button>
+                </form>
+            </div>
+            
+            <!-- Admin Panel Content (hidden by default) -->
+            <div id="pkm-admin-panel" class="hidden">
+                <h3 class="text-3xl font-bold text-blue-700 mb-6">Panel Administracyjny PKM Zawiczyn</h3>
+                <p class="mb-4 text-lg">Witaj w panelu administracyjnym. Tutaj możesz zarządzać plikami i informacjami dla PKM Zawiczyn.</p>
+                <div class="mb-6">
+                    <button id="pkm-logout-btn" class="back-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-log-out"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" x2="9" y1="12" y2="12"/></svg>
+                        <span>Wyloguj</span>
+                    </button>
+                </div>
+                
+                <h3 class="text-xl font-semibold text-blue-600 mb-2 mt-6">Przydatne linki:</h3>
+                <ul class="list-none space-y-2">
+                    <li>
+                        <button class="subsection-button" data-target-sub="pkm-timetable-subsection">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bus"><path d="M19 17h2l.6-3.3a1 1 0 0 0 0-.4L22 13"/><path d="M2 17h17"/><path d="M2 9h19c.6 0 .9.5.8 1.1L20 17H5.5"/><path d="M6 18v3"/><path d="M19 18v3"/><circle cx="17" cy="17" r="2"/><circle cx="7" cy="17" r="2"/></svg>
+                            <span>Rozkład jazdy autobusów</span>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="subsection-button" data-target-sub="pkm-tickets-subsection">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-ticket"><path d="M2 9a3 3 0 0 1 0 6v-6Z"/><path d="M22 9a3 3 0 0 0 0 6v-6Z"/><path d="M10 21V3"/><path d="M14 21V3"/></svg>
+                            <span>Cennik biletów</span>
+                        </button>
+                    </li>
+                </ul>
+                <h3 class="text-xl font-semibold text-blue-600 mb-2 mt-6">Pliki do pobrania:</h3>
+                <div id="pkm-downloads-list">
+                    <div class="download-item">
+                        <span>Regulamin Przewozów PKM ZAWICZYN (PDF)</span>
+                        <a href="files/regulamin_przew_PKM_Zawiczyn.pdf" download>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-download"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+                            <span>Pobierz</span>
+                        </a>
+                    </div>
+                   <div class="download-item">
+                        <span>Lista Przystanków dla osoby publicznej (PDF)</span>
+                        <a href="files/lista_przystankow_bez_logowania.pdf" download>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-download"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+                            <span>Pobierz</span>
+                        </a>
+                    </div>
+                </div>
+                <p class="text-sm text-gray-500 mt-4">PKM Zawiczyn. Wszelkie Prawa Zastrzeżone.</p>
+            </div>
+
             <div id="pkm-main-content">
                 <p class="mb-4 text-lg">Przedsiębiorstwo Komunikacji Miejskiej Zawiczyn (PKM Zawiczyn) zapewnia mieszkańcom i odwiedzającym wygodny i ekologiczny transport na terenie miasta i okolic. Nasza flota autobusów stale się rozwija, aby sprostać rosnącym potrzebom komunikacyjnym.</p>
                 <p class="mb-4 text-lg">Na tej stronie znajdziesz najważniejsze informacje dotyczące rozkładów jazdy, biletów oraz zmian w funkcjonowaniu komunikacji miejskiej.</p>
@@ -465,6 +538,7 @@
                 </div>
                 <p class="text-sm text-gray-500 mt-4">PKM Zawiczyn. Wszelkie Prawa Zastrzeżone.</p>
             </div>
+            
 
             <div id="pkm-timetable-subsection" class="pkm-sub-section">
                 <button class="back-button" data-target-sub="pkm-main-content">
@@ -555,6 +629,12 @@
             const pkmSubsections = document.querySelectorAll('#pkm-section .pkm-sub-section');
             const backButtons = document.querySelectorAll('#pkm-section .back-button');
 
+            const pkmLoginForm = document.getElementById('pkm-login-form');
+            const pkmAdminPanel = document.getElementById('pkm-admin-panel');
+            const adminLoginForm = document.getElementById('admin-login-form');
+            const pkmLogoutBtn = document.getElementById('pkm-logout-btn');
+            const loginMessage = document.getElementById('login-message');
+            
             const themeToggleButton = document.getElementById('theme-toggle-btn');
             const sunIcon = document.getElementById('sun-icon');
             const moonIcon = document.getElementById('moon-icon');
@@ -600,9 +680,20 @@
                 if (targetSection) {
                     targetSection.classList.add('active');
                     
-                    if (targetId !== 'pkm-section') {
+                    if (targetId === 'pkm-section') {
+                        // Check login status for PKM section
+                        const isLoggedIn = localStorage.getItem('isPkmAdminLoggedIn') === 'true';
+                        if (isLoggedIn) {
+                            showAdminPanel();
+                        } else {
+                            showLoginForm();
+                        }
+                    } else {
+                        // For other sections, hide all PKM sub-sections
                         pkmMainContent.classList.remove('hidden');
                         pkmSubsections.forEach(sub => sub.classList.remove('active'));
+                        pkmLoginForm.classList.remove('active');
+                        pkmAdminPanel.classList.remove('active');
                     }
                 }
             }
@@ -616,7 +707,7 @@
                     activeButton.classList.add('active');
                 }
             }
-
+            
             navButtons.forEach(button => {
                 button.addEventListener('click', () => {
                     const targetId = button.dataset.target;
@@ -625,9 +716,18 @@
                 });
             });
 
+            // Handle navigation for PKM sub-sections (Rozkład/Cennik)
             pkmSubsectionButtons.forEach(button => {
                 button.addEventListener('click', () => {
                     const targetSubId = button.dataset.targetSub;
+                    // Hide the current active view (either main content or admin panel)
+                    if (pkmMainContent.classList.contains('active')) {
+                        pkmMainContent.classList.remove('active');
+                    }
+                    if (pkmAdminPanel.classList.contains('active')) {
+                        pkmAdminPanel.classList.remove('active');
+                    }
+                    
                     pkmMainContent.classList.add('hidden');
                     pkmSubsections.forEach(sub => sub.classList.remove('active'));
                     const targetSub = document.getElementById(targetSubId);
@@ -637,43 +737,44 @@
                 });
             });
             
+            // Handle back button for PKM sub-sections
             backButtons.forEach(button => {
                 button.addEventListener('click', () => {
-                    const targetSubId = button.dataset.targetSub;
                     button.closest('.pkm-sub-section').classList.remove('active');
-                    pkmMainContent.classList.remove('hidden');
+                    
+                    // Show the correct view based on login status
+                    const isLoggedIn = localStorage.getItem('isPkmAdminLoggedIn') === 'true';
+                    if (isLoggedIn) {
+                        pkmAdminPanel.classList.add('active');
+                    } else {
+                        pkmMainContent.classList.remove('hidden');
+                    }
                 });
             });
 
+            // Initialize the first section and load theme
             const initialSectionId = 'announcements-section';
             showSection(initialSectionId);
             activateButton(initialSectionId);
 
+            // Handle contact form submission
             const contactForm = document.getElementById('contact-form');
             const responseMessage = document.getElementById('response-message');
-
             if (contactForm) {
                 contactForm.addEventListener('submit', async (e) => {
                     e.preventDefault();
-
                     const form = e.target;
                     const formData = new FormData(form);
                     const formProps = Object.fromEntries(formData);
-                    
-                    responseMessage.classList.remove('hidden');
-                    responseMessage.classList.remove('bg-green-100', 'text-green-800', 'bg-red-100', 'text-red-800');
+                    responseMessage.classList.remove('hidden', 'bg-green-100', 'text-green-800', 'bg-red-100', 'text-red-800');
                     responseMessage.classList.add('bg-gray-100', 'text-gray-800');
                     responseMessage.innerHTML = 'Wysyłam wiadomość...';
-
                     try {
                         const response = await fetch(form.action, {
                             method: form.method,
                             body: JSON.stringify(formProps),
-                            headers: {
-                                'Accept': 'application/json'
-                            }
+                            headers: { 'Accept': 'application/json' }
                         });
-
                         if (response.ok) {
                             responseMessage.classList.remove('bg-gray-100', 'text-gray-800');
                             responseMessage.classList.add('bg-green-100', 'text-green-800');
@@ -694,8 +795,75 @@
                     }
                 });
             }
+
+            // --- New Admin Panel JS Logic ---
+            function showLoginForm() {
+                pkmLoginForm.classList.add('active');
+                pkmAdminPanel.classList.remove('active');
+                pkmMainContent.classList.remove('active');
+                pkmSubsections.forEach(sub => sub.classList.remove('active'));
+            }
+
+            function showAdminPanel() {
+                pkmLoginForm.classList.remove('active');
+                pkmAdminPanel.classList.add('active');
+                pkmMainContent.classList.remove('active');
+                pkmSubsections.forEach(sub => sub.classList.remove('active'));
+            }
+
+            // Handle login form submission
+            if (adminLoginForm) {
+                adminLoginForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    
+                    const loginInput = document.getElementById('admin-login').value;
+                    const passwordInput = document.getElementById('admin-password').value;
+
+                    // Hardcoded credentials
+                    const correctLogin = 'Admin@O5K4RTechnologic.pl';
+                    const correctPassword = 'MiasteczkoZawiczyn1234@';
+                    
+                    if (loginInput === correctLogin && passwordInput === correctPassword) {
+                        // Successful login
+                        localStorage.setItem('isPkmAdminLoggedIn', 'true');
+                        loginMessage.textContent = 'Zalogowano pomyślnie!';
+                        loginMessage.classList.remove('hidden', 'bg-red-100', 'text-red-800', 'dark:bg-red-100', 'dark:text-red-800');
+                        loginMessage.classList.add('bg-green-100', 'text-green-800', 'dark:bg-green-100', 'dark:text-green-800');
+                        setTimeout(() => {
+                            showAdminPanel();
+                            loginMessage.classList.add('hidden');
+                        }, 1000);
+                    } else {
+                        // Failed login
+                        loginMessage.textContent = 'Błędny login lub hasło.';
+                        loginMessage.classList.remove('hidden', 'bg-green-100', 'text-green-800', 'dark:bg-green-100', 'dark:text-green-800');
+                        loginMessage.classList.add('bg-red-100', 'text-red-800', 'dark:bg-red-100', 'dark:text-red-800');
+                    }
+                });
+            }
+
+            // Handle logout button click
+            if (pkmLogoutBtn) {
+                pkmLogoutBtn.addEventListener('click', () => {
+                    localStorage.removeItem('isPkmAdminLoggedIn');
+                    showLoginForm();
+                    document.getElementById('admin-login').value = '';
+                    document.getElementById('admin-password').value = '';
+                });
+            }
+
+            // Initial state for PKM section
+            if (document.getElementById('pkm-section').classList.contains('active')) {
+                const isLoggedIn = localStorage.getItem('isPkmAdminLoggedIn') === 'true';
+                if (isLoggedIn) {
+                    showAdminPanel();
+                } else {
+                    showLoginForm();
+                }
+            }
         });
     </script>
 </body>
 </html>
+
 
