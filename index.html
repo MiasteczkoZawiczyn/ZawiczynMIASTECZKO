@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miasteczko Zawiczyn</title>
+    <link href="https://fonts.googleapis.com/css2?family=Amiko:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <style>
+        [x-cloak] { display: none !important; }
+        body { font-family: 'Helvetica', Arial, sans-serif; }
+        h1, h2, h3, h4 { font-family: 'Amiko', sans-serif; }
+        .glass-card { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(15px); }
+        .nav-link { transition: all 0.3s ease; }
+        .hover-card:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-thumb { background: #10b981; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 font-sans antialiased" 
+      x-data="{ 
+          activeTab: 'home', 
+          activeLineId: '101',
+          ztmView: 'main', 
+          direction: 'A',
+          showPrivacy: false,
+          currentImage: 0,
+          images: [
+              'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?auto=format&fit=crop&w=1600&q=80',
+              'https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?auto=format&fit=crop&w=1600&q=80',
+              'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1600&q=80'
+          ],
+          lines: {
+              '101': { name: '101', type: 'Linia zwykła', dirA: { name: 'Plaża Świderska', stops: [{n: 'Muzeum Sztuki Wojennej 3', n: 'Muzeum Sztuki Wojennej 1', s: 'ul. Magazynowa'}, {n: 'Wakacyjna 1', n: 'Rondo WOŚP 1', n: 'Plaża Świderska 1', s: 'ul. Wakacyjna'}] }, dirB: { name: 'Muzeum Sztuki Wojennej', stops: [{n: 'Plaża Świderska 1', n: 'Rondo WOŚP 2', n: 'Wakacyjna 2' s: 'ul. Wakacyjna'}, {n: 'Muzeum Sztuki Wojennej 3', s: 'ul. Magazynowa'}] } }
+          }
+      }" 
+      x-init="setInterval(() => { currentImage = (currentImage + 1) % images.length }, 5000)">
+
+    <nav class="sticky top-0 z-40 w-full bg-white/90 backdrop-blur-md border-b border-emerald-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="text-2xl font-black text-emerald-900 tracking-tighter cursor-pointer hover:opacity-80 transition" @click="activeTab = 'home'; ztmView = 'main'">ZAWICZYN<span class="text-amber-500">.pl</span></div>
+                <div class="hidden md:flex space-x-8 font-medium">
+                    <button @click="activeTab = 'home'; ztmView = 'main'" :class="{'text-emerald-600': activeTab === 'home'}" class="nav-link hover:text-emerald-600">Aktualności</button>
+                    <button @click="activeTab = 'ztm'; ztmView = 'main'" :class="{'text-emerald-600': activeTab === 'ztm'}" class="nav-link hover:text-emerald-600">ZTM Zawiczyn</button>
+                    <button @click="activeTab = 'contact'" :class="{'text-emerald-600': activeTab === 'contact'}" class="nav-link hover:text-emerald-600">Kontakt</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        
+        <div x-show="activeTab === 'home'" x-cloak x-transition:enter="transition ease-out duration-500 transform translate-y-4" class="space-y-12">
+            <header class="relative overflow-hidden rounded-[2rem] h-[500px] flex items-center justify-center text-white shadow-xl">
+                <template x-for="(img, index) in images" :key="index">
+                    <div x-show="currentImage === index" class="absolute inset-0 transition-opacity duration-1000 ease-in-out" :style="'background-image: url(' + img + '); background-size: cover; background-position: center; filter: blur(4px) brightness(0.6);'"></div>
+                </template>
+                <div class="relative z-10 text-center px-4">
+                    <h1 class="text-5xl md:text-7xl font-extrabold mb-6 leading-tight">Witaj w Miasteczku Zawiczyn.<br>Nasze miasto, Twój dom.</h1>
+                </div>
+            </header>
+
+            <section>
+                <h2 class="text-3xl font-bold text-emerald-900 mb-8">Aktualności z miasta</h2>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-white p-6 rounded-3xl border border-emerald-50 hover-card transition-all">
+                        <div class="text-amber-500 font-bold mb-2">6 Cze 2026</div>
+                        <h3 class="text-xl font-bold mb-4">Trwają prace nad budową ul. Wafelkowej</h3>
+                        <p class="text-slate-600">Wkrótce więcej informacji...</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-3xl border border-emerald-50 hover-card transition-all">
+                        <div class="text-amber-500 font-bold mb-2">3 Cze 2026</div>
+                        <h3 class="text-xl font-bold mb-4">Konkurs na logo Zawiczyna</h3>
+                        <p class="text-slate-600">Wygraj darmowy przejazd komunikacją miejską! Ruszamy z konkursem na projekt nowego symbolu naszego miasta...</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div x-show="activeTab === 'ztm'" x-cloak x-transition:enter="transition ease-out duration-500" class="bg-white p-6 md:p-10 rounded-[2rem] shadow-sm border border-emerald-100">
+            
+            <div x-show="ztmView === 'main'" class="space-y-12">
+                <div class="text-center space-y-4 py-8">
+                    <div class="inline-block p-4 bg-emerald-50 rounded-full mb-4">
+                        <svg class="w-16 h-16 text-emerald-600" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
+                        </svg>
+                    </div>
+                    <h2 class="text-4xl font-extrabold text-emerald-900">ZTM Zawiczyn</h2>
+                    <p class="text-xl text-slate-600 max-w-2xl mx-auto">Od lat rozwijamy nasze połączenia. Przewieźliśmy już ponad 100 000 pasażerów. Nowoczesność w zasięgu ręki.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="p-8 border border-emerald-100 rounded-3xl bg-emerald-50/50 hover:shadow-lg transition-all duration-300">
+                        <h3 class="text-2xl font-bold text-emerald-900 mb-6">Wybierz linię:</h3>
+                        <div class="flex flex-col gap-3">
+                            <template x-for="(line, id) in lines" :key="id">
+                                <button @click="activeLineId = id; ztmView = 'schedule'" class="flex items-center justify-between p-4 bg-white rounded-2xl border border-emerald-100 hover:border-emerald-400 transition text-left group">
+                                    <div class="flex items-center gap-4">
+                                        <div class="w-12 h-12 bg-emerald-600 rounded-xl flex items-center justify-center text-white font-black text-lg" x-text="line.name"></div>
+                                        <div>
+                                            <div class="font-bold text-slate-800" x-text="line.type"></div>
+                                            <div class="text-sm text-emerald-600">Rozkład jazdy</div>
+                                        </div>
+                                    </div>
+                                    <span class="text-emerald-400 group-hover:translate-x-1 transition">&rarr;</span>
+                                </button>
+                            </template>
+                        </div>
+                    </div>
+
+                    <div class="p-8 border border-emerald-100 rounded-3xl bg-amber-50/50 hover:shadow-lg transition-all duration-300">
+                        <h3 class="text-2xl font-bold text-amber-900 mb-6">Potrzebujesz pomocy?</h3>
+                        <p class="text-amber-800 mb-6">Masz pytania dotyczące rozwoju lub rozkładów? Jesteśmy do Twojej dyspozycji.</p>
+                        <button @click="ztmView = 'contact'" class="w-full px-6 py-4 bg-amber-500 text-white rounded-xl font-bold hover:bg-amber-600 transition">Kontakt z ZTM</button>
+                    </div>
+                </div>
+            </div>
+
+            <div x-show="ztmView === 'schedule'" x-transition:enter="transition ease-out duration-500" class="space-y-6">
+                <button @click="ztmView = 'main'" class="text-emerald-600 font-bold mb-4 flex items-center gap-2 hover:opacity-80">&larr; Powrót do wyboru linii</button>
+                
+                <div class="bg-white border border-slate-200 rounded-3xl shadow-sm overflow-hidden">
+                    <div class="p-8 border-b border-slate-100 flex items-center gap-6">
+                        <div class="w-20 h-20 bg-emerald-600 rounded-full flex items-center justify-center text-white font-black text-3xl shadow-inner">
+                            <span x-text="lines[activeLineId].name"></span>
+                        </div>
+                        <div class="flex-grow">
+                            <h3 class="text-3xl font-bold text-slate-900" x-text="lines[activeLineId].type"></h3>
+                            <div class="flex items-center gap-4 mt-4">
+                                <div class="flex items-center gap-2">
+                                    <svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M7 16l-4-4m0 0l4-4m-4 4h18M13 16l4-4m0 0l-4-4m4 4H7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                    <button @click="direction = 'A'" :class="direction === 'A' ? 'text-emerald-600 font-bold border-b-2 border-emerald-600' : 'text-slate-500'" class="px-2 pb-1 transition">Kierunek: <span x-text="lines[activeLineId].dirA.name"></span></button>
+                                </div>
+                                <div class="text-slate-300">|</div>
+                                <div class="flex items-center gap-2">
+                                    <button @click="direction = 'B'" :class="direction === 'B' ? 'text-emerald-600 font-bold border-b-2 border-emerald-600' : 'text-slate-500'" class="px-2 pb-1 transition">Kierunek: <span x-text="lines[activeLineId].dirB.name"></span></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex border-b border-slate-200 overflow-x-auto text-sm">
+                        <div class="px-8 py-4 border-b-2 border-emerald-600 font-bold text-emerald-600 bg-emerald-50">Aktualny rozkład jazdy:</div>
+                    </div>
+
+                    <div class="p-8 space-y-0 relative">
+                        <div class="absolute left-[128px] top-12 bottom-12 w-0.5 bg-slate-200 z-0"></div>
+                        <template x-for="(stop, index) in (direction === 'A' ? lines[activeLineId].dirA.stops : lines[activeLineId].dirB.stops)" :key="index">
+                            <div class="flex items-center gap-8 py-5 relative z-10">
+                                <div class="w-20 text-right text-sm font-medium text-slate-400" x-text="(index * 4) + ' min'"></div>
+                                <div class="w-4 h-4 bg-emerald-600 rounded-full border-4 border-white shadow-sm ring-1 ring-slate-200"></div>
+                                <div class="flex-grow flex justify-between items-center pr-8">
+                                    <span class="font-bold text-lg text-slate-800" x-text="stop.n"></span>
+                                    <span class="text-sm text-slate-400 font-medium" x-text="stop.s"></span>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </div>
+
+            <div x-show="ztmView === 'contact'" x-transition:enter="transition ease-out duration-500" class="text-center space-y-8 py-12">
+                <button @click="ztmView = 'main'" class="text-emerald-600 font-bold hover:opacity-80">&larr; Powrót do menu ZTM</button>
+                <h2 class="text-4xl font-bold text-emerald-900">Kontakt z ZTM</h2>
+                <div class="bg-emerald-50 p-10 rounded-3xl inline-block max-w-lg w-full text-center">
+                    <div class="mb-6">
+                        <p class="font-bold text-emerald-800 text-lg">Godziny pracy:</p>
+                        <p class="text-emerald-600">Poniedziałek - Piątek: 08:00 - 16:00</p>
+                    </div>
+                    <p class="font-bold text-emerald-800 text-lg mb-2">Adres e-mail:</p>
+                    <a href="mailto:ztm@zawiczyn.pl" class="text-emerald-600 font-black text-3xl underline hover:text-emerald-700 transition">miasteczkozawiczyn.biuro@gmail.com</a>
+                </div>
+            </div>
+        </div>
+
+        <div x-show="activeTab === 'contact'" x-cloak x-transition:enter="transition ease-out duration-500" class="max-w-3xl mx-auto bg-white p-12 rounded-[2rem] shadow-sm border border-emerald-100">
+            <h2 class="text-4xl font-bold text-emerald-900 mb-8">Kontakt z Urzędem Miasta</h2>
+            <div class="space-y-6">
+                <p class="text-slate-600 text-lg">W razie pytań zapraszamy do kontaktu z naszym biurem obsługi interesanta.</p>
+                <div class="bg-slate-50 p-6 rounded-2xl">
+                    <p class="font-bold">Urząd Miasta Zawiczyn</p>
+                    <p>ul. Ratuszowa 1, 00-001 Zawiczyn</p>
+                    <p class="mt-2 text-emerald-600 font-bold">Tel: +48 560 443 789</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="mt-12 py-12 border-t border-emerald-100">
+        <div class="max-w-7xl mx-auto px-4 text-center text-slate-500">
+            <p>&copy; 2026 Miasteczko Zawiczyn. Wszelkie prawa zastrzeżone.</p>
+            <button @click="showPrivacy = true" class="text-sm mt-4 text-emerald-600 font-medium underline hover:text-emerald-700">Polityka prywatności</button>
+        </div>
+    </footer>
+
+    <div x-show="showPrivacy" x-cloak class="fixed inset-0 z-50 flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-emerald-900/40 backdrop-blur-sm" @click="showPrivacy = false"></div>
+        <div class="glass-card p-8 rounded-3xl max-w-2xl w-full relative z-10 shadow-2xl">
+            <h2 class="text-2xl font-bold mb-6 text-emerald-900">Polityka Prywatności</h2>
+            <div class="text-slate-700 space-y-4">
+                <p>Administratorem Państwa danych osobowych jest <strong>Andrzej Nowak</strong>.</p>
+                <p>Dbamy o Twoją prywatność. Dane zbierane przez nasz portal służą wyłącznie w celach informacyjnych oraz usprawnienia komunikacji między urzędem a mieszkańcami Zawiczyna. Nie udostępniamy Twoich danych osobom trzecim.</p>
+                <p>W przypadku pytań dotyczących przetwarzania danych, prosimy o kontakt pod adresem: <strong>miasteczkozawiczyn.biuro@gmail.com</strong>.</p>
+            </div>
+            <button @click="showPrivacy = false" class="mt-8 w-full bg-emerald-600 text-white py-3 rounded-full font-bold hover:bg-emerald-700 transition">Zamknij</button>
+        </div>
+    </div>
+</body>
+</html>
