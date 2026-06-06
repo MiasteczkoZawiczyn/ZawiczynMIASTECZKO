@@ -29,11 +29,33 @@
           images: [
               'files/photo1.png',
               'files/photo2.png',
-                'files/photo3.png',
+              'files/photo3.png',
               'files/photo4.png'
           ],
           lines: {
-              '101': { name: '101', type: 'Linia zwykła', dirA: { name: 'Plaża Świderska', stops: [{n: 'Muzeum Sztuki Wojennej 3', n: 'Muzeum Sztuki Wojennej 1', s: 'ul. Magazynowa'}, {n: 'Wakacyjna 1', n: 'Rondo WOŚP 1', n: 'Plaża Świderska 1', s: 'ul. Wakacyjna'}] }, dirB: { name: 'Muzeum Sztuki Wojennej', stops: [{n: 'Plaża Świderska 1', n: 'Rondo WOŚP 2', n: 'Wakacyjna 2' s: 'ul. Wakacyjna'}, {n: 'Muzeum Sztuki Wojennej 3', s: 'ul. Magazynowa'}] } }
+              '101': { 
+                  name: '101', 
+                  type: 'Linia zwykła', 
+                  dirA: { 
+                      name: 'Plaża Świderska', 
+                      stops: [
+                          {n: 'Muzeum Sztuki Wojennej 3', s: 'ul. Magazynowa', time: '0 min'},
+                          {n: 'Muzeum Sztuki Wojennej 1', s: '', time: '1 min'},
+                          {n: 'Wakacyjna 1', s: 'ul. Wakacyjna', time: '2 min'},
+                          {n: 'Rondo WOŚP 1', s: '', time: '3 min'},
+                          {n: 'Plaża Świderska 1', s: '', time: '4 min'}
+                      ] 
+                  }, 
+                  dirB: { 
+                      name: 'Muzeum Sztuki Wojennej', 
+                      stops: [
+                          {n: 'Plaża Świderska 1', s: 'ul. Wakacyjna', time: '0 min'},
+                          {n: 'Rondo WOŚP 2', s: '', time: '1 min'},
+                          {n: 'Wakacyjna 2', s: '', time: '2 min'},
+                          {n: 'Muzeum Sztuki Wojennej 3', s: 'ul. Magazynowa', time: '3 min'}
+                      ] 
+                  } 
+              }
           }
       }" 
       x-init="setInterval(() => { currentImage = (currentImage + 1) % images.length }, 5000)">
@@ -151,7 +173,7 @@
                         <div class="absolute left-[128px] top-12 bottom-12 w-0.5 bg-slate-200 z-0"></div>
                         <template x-for="(stop, index) in (direction === 'A' ? lines[activeLineId].dirA.stops : lines[activeLineId].dirB.stops)" :key="index">
                             <div class="flex items-center gap-8 py-5 relative z-10">
-                                <div class="w-20 text-right text-sm font-medium text-slate-400" x-text="(index * 4) + ' min'"></div>
+                                <div class="w-20 text-right text-sm font-medium text-slate-400" x-text="stop.time"></div>
                                 <div class="w-4 h-4 bg-emerald-600 rounded-full border-4 border-white shadow-sm ring-1 ring-slate-200"></div>
                                 <div class="flex-grow flex justify-between items-center pr-8">
                                     <span class="font-bold text-lg text-slate-800" x-text="stop.n"></span>
@@ -172,7 +194,7 @@
                         <p class="text-emerald-600">Poniedziałek - Piątek: 08:00 - 16:00</p>
                     </div>
                     <p class="font-bold text-emerald-800 text-lg mb-2">Adres e-mail:</p>
-                    <a href="mailto:ztm@zawiczyn.pl" class="text-emerald-600 font-black text-3xl underline hover:text-emerald-700 transition">miasteczkozawiczyn.biuro@gmail.com</a>
+                    <a href="mailto:miasteczkozawiczyn.biuro@gmail.com" class="text-emerald-600 font-black text-3xl underline hover:text-emerald-700 transition">miasteczkozawiczyn.biuro@gmail.com</a>
                 </div>
             </div>
         </div>
