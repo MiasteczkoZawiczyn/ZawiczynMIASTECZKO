@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <title>Panel Administracyjny</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+        import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-database.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyB-MVcYWtwx5NKskWVmNutH-lFP8gXap_o",
+            authDomain: "miast-6433c.firebaseapp.com",
+            projectId: "miast-6433c",
+            databaseURL: "https://miast-6433c-default-rtdb.europe-west1.firebasedatabase.app",
+            storageBucket: "miast-6433c.firebasestorage.app",
+            messagingSenderId: "356145268961",
+            appId: "1:356145268961:web:038116ddc64a31d6eb8fa0"
+        };
+        const db = getDatabase(initializeApp(firebaseConfig));
+        
+        const CORRECT_HASH = "f5d88cffb0a5ea6af84fd8532c650d7a804eee6dd326680d31dcb3bc09830343";
+
+        async function verify(input) {
+            const buffer = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(input));
+            return Array.from(new Uint8Array(buffer)).map(b => b.toString(16).padStart(2, '0')).join('') === CORRECT_HASH;
+        }
+
+        window.login = async () => {
+            if(await verify(document.getElementById('pass').value)) {
+                document.getElementById('login').classList.add('hidden');
+                document.getElementById('panel').classList.remove('hidden');
+            } else { alert("Błędne hasło!"); }
+        };
+
+        window.save = () => {
+            try {
+                const data = JSON.parse(document.getElementById('json').value);
+                set(ref(db, 'lines'), data).then(() => alert("Zapisano pomyślnie!"));
+            } catch(e) { alert("Błędny format JSON!"); }
+        };
+    </script>
+</head>
+<body class="bg-slate-100 p-10">
+    <div id="login" class="max-w-sm mx-auto bg-white p-8 rounded shadow">
+        <input type="password" id="pass" class="border w-full p-2 mb-4" placeholder="Wpisz hasło">
+        <button onclick="login()" class="bg-emerald-600 text-white w-full p-2">Zaloguj</button>
+    </div>
+    <div id="panel" class="hidden max-w-2xl mx-auto bg-white p-8 rounded shadow">
+        <h2 class="text-xl font-bold mb-4">Edycja danych (JSON)</h2>
+        <textarea id="json" class="w-full h-64 border p-2 font-mono text-xs"></textarea>
+        <button onclick="save()" class="bg-blue-600 text-white mt-4 p-2 w-full">Zapisz zmiany w Firebase</button>
+    </div>
+</body>
+</html>
